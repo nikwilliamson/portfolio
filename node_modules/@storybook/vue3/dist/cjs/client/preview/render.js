@@ -1,0 +1,68 @@
+"use strict";
+
+require("core-js/modules/es.array.slice.js");
+
+require("core-js/modules/es.object.freeze.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderToDOM = renderToDOM;
+exports.storybookApp = exports.activeStoryComponent = void 0;
+
+require("core-js/modules/es.function.name.js");
+
+require("core-js/modules/es.array.concat.js");
+
+var _tsDedent = _interopRequireDefault(require("ts-dedent"));
+
+var _vue = require("vue");
+
+var _templateObject;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var activeStoryComponent = (0, _vue.shallowRef)(null);
+exports.activeStoryComponent = activeStoryComponent;
+var root = null;
+var storybookApp = (0, _vue.createApp)({
+  // If an end-user calls `unmount` on the app, we need to clear our root variable
+  unmounted: function unmounted() {
+    root = null;
+  },
+  setup: function setup() {
+    return function () {
+      if (!activeStoryComponent.value) throw new Error('No Vue 3 Story available. Was it set correctly?');
+      return (0, _vue.h)(activeStoryComponent.value);
+    };
+  }
+});
+exports.storybookApp = storybookApp;
+
+function renderToDOM(_ref, domElement) {
+  var title = _ref.title,
+      name = _ref.name,
+      storyFn = _ref.storyFn,
+      showMain = _ref.showMain,
+      showError = _ref.showError,
+      showException = _ref.showException;
+  storybookApp.config.errorHandler = showException;
+  var element = storyFn();
+
+  if (!element) {
+    showError({
+      title: "Expecting a Vue component from the story: \"".concat(name, "\" of \"").concat(title, "\"."),
+      description: (0, _tsDedent.default)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n        Did you forget to return the Vue component from the story?\n        Use \"() => ({ template: '<my-comp></my-comp>' })\" or \"() => ({ components: MyComp, template: '<my-comp></my-comp>' })\" when defining the story.\n      "])))
+    });
+    return;
+  }
+
+  showMain();
+  activeStoryComponent.value = element;
+
+  if (!root) {
+    root = storybookApp.mount(domElement);
+  }
+}

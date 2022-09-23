@@ -1,7 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://use.typekit.net/msv4llb.css" />
-  <meta name="theme-color" content="#FFCC70" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#FFCC70" media="(prefers-color-scheme: dark)">
   <PageHeader title="Hi. I'm Nik. I design products that are easy to use." buttonLabel="Testing"/>
   <JobPositions :positions="this.positions"/>
   <!-- <JobPosition

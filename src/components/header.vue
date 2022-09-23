@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <svg class="logo" width="13" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.355 0 2.818.185 0 17.975l5.304-1.709L1.673 32 13 9.718l-6.251 1.886L11.355 0Z" fill="#E5CD44"/></svg>
+    <svg class="logo" width="13" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.355 0 2.818.185 0 17.975l5.304-1.709L1.673 32 13 9.718l-6.251 1.886L11.355 0Z" fill="#FFCC70"/></svg>
       <div>
         <h1>{{ title }}</h1>
         <NWGlowButton :buttonType="buttonType" :label="buttonLabel" />

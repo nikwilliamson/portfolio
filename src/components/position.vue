@@ -36,10 +36,10 @@ p {
 }
 .job {
   display: grid; 
-  grid-template-columns: 1fr 2fr; 
+  grid-template-columns: 1fr 3fr; 
   grid-template-rows: 1fr; 
-  grid-column-gap: 3rem;
-  grid-row-gap: 0px;
+  grid-column-gap: 2rem;
+  grid-row-gap: 0;
   color: #232830;
 }
 
@@ -65,8 +65,13 @@ h2 {
 .description {
   font-size: 1.33rem;
   line-height: 1.5em;
-  max-width: 40vw;
+  max-width: 80ch;
 }
-/* .date { grid-area: 1 / 1 / 2 / 2; }  */
-/* .details { grid-area: 1 / 2 / 2 / 6; }  */
+
+@media only screen and (max-width: 600px) {
+  .job {
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto 1fr; 
+  }
+}
 </style>

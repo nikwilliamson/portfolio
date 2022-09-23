@@ -1,6 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://use.typekit.net/msv4llb.css" />
-  <meta name="theme-color" content="#4158D0" />
+  <meta name="theme-color" content="#FFCC70" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: dark)">
   <PageHeader title="Hi. I'm Nik. I design products that are easy to use." buttonLabel="Testing"/>
   <JobPositions :positions="this.positions"/>
   <!-- <JobPosition
@@ -41,7 +42,7 @@ export default {
         root.style.setProperty('--mouse-y', y);
     });
 
-    document.addEventListener('dragover', evt => {
+    document.addEventListener('touchmove', evt => {
       
       let x = evt.clientX / innerWidth;
       let y = evt.clientY / innerHeight;

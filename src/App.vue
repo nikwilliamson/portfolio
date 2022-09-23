@@ -1,5 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://use.typekit.net/msv4llb.css" />
+  <meta name="theme-color" content="#4158D0" />
   <PageHeader title="Hi. I'm Nik. I design products that are easy to use." buttonLabel="Testing"/>
   <JobPositions :positions="this.positions"/>
   <!-- <JobPosition

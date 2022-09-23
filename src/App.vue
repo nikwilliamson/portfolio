@@ -11,6 +11,7 @@
     v-bind:startDate="position.startDate"
     v-bind:endDate="position.endDate"
   /> -->
+  <div class="background"></div>
 </template>
 
 <script>
@@ -27,8 +28,18 @@ export default {
   },
   async created() {
     this.positions = await this.getPositions();
-  },
 
+    const root = document.documentElement;
+ 
+    document.addEventListener('mousemove', evt => {
+        let x = evt.clientX / innerWidth;
+        let y = evt.clientY / innerHeight;
+    
+        root.style.setProperty('--mouse-x', x);
+        root.style.setProperty('--mouse-y', y);
+    });
+  },
+  
   methods: {
     getPositions: async () => {
       const query = `{
@@ -77,8 +88,18 @@ export default {
   font-family: "proxima-nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 body { 
-  background-image: linear-gradient(270deg, #FFCC70, #C850C0, #4158D0);
+  background: transparent;
   margin: 0;
   padding: 0;
+}
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 200%) calc(var(--mouse-y, 0) * 200%), #FFCC70, #C850C0, #4158D0) no-repeat 0 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
 }
 </style>

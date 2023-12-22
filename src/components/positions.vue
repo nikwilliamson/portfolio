@@ -1,12 +1,13 @@
 <template>
 <div class="positions">
-  <PageTitle title="Work experience" buttonLabel="Download"/>
+  <PageTitle title="Work experience"/>
   <JobPosition
     v-for="position in positions"
     v-bind:key="position.sys.id"
     v-bind:company="position.company"
     v-bind:title="position.title"
-    v-bind:description="position.description2"
+    v-bind:description2="position.description2"
+    v-bind:description="position.description.json"
     v-bind:startDate="position.startDate"
     v-bind:endDate="position.endDate"
   />
@@ -42,6 +43,13 @@ export default {
   background: white;
   margin: 2rem 2rem 0 0;
   border-radius: 0 .1rem 0 0;
+}
+@media (max-width: 1000px) {
+ .positions {
+    padding: 4rem 10vw;
+    margin: 0;
+    border-radius: 0;
+ }
 }
 /* .date { grid-area: 1 / 1 / 2 / 2; }  */
 /* .details { grid-area: 1 / 2 / 2 / 6; }  */

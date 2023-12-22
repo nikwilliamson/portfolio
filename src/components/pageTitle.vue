@@ -1,7 +1,7 @@
 <template>
   <div class="pageTitle light">
-    <h1> {{ title }}</h1>
-    <NWButton :buttonType="buttonType" :label="buttonLabel" />
+    <h2> {{ title }}</h2>
+    <NWButton v-if="buttonLabel" :buttonType="buttonType" :label="buttonLabel" />
   </div>
 </template>
 
@@ -27,14 +27,19 @@ export default {
 .button, button {
     margin-left: auto;
 }
-.light h1 {
+.light h2 {
   color: #c0c5ce;
   font-weight: 400;
   margin: 0;
 }
 
-h1 {
+h2 {
   font-size: 1.777rem;
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 1.333rem;
+  }
 }
 
 </style>

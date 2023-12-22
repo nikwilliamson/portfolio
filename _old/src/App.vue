@@ -47,19 +47,16 @@ export default {
                 title
                 startDate
                 endDate
-                description {
-                  json
-                }
                 description2
               }
             }
          }`;
 
-      const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${import.meta.env.VITE_APP_CONTENTFUL_SPACE_ID}`;
+      const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.VUE_APP_CONTENTFUL_SPACE_ID}`;
       const fetchOptions = {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_APP_CONTENTFUL_ACCESS_TOKEN}`,
+          Authorization: `Bearer ${process.env.VUE_APP_CONTENTFUL_ACCESS_TOKEN}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -71,7 +68,6 @@ export default {
         const response = await fetch(fetchUrl, fetchOptions).then((response) =>
           response.json()
         );
-        console.log(response.data.jobCollection.items);
         return response.data.jobCollection.items;
       } catch (error) {
         // throw new Error("Could not receive the data from Contentful!");
@@ -95,10 +91,10 @@ body {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #FFCC70, #C850C0, #4158D0) no-repeat 0 0;
+  background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 200%) calc(var(--mouse-y, 0) * 200%), #FFCC70, #C850C0, #4158D0) no-repeat 0 0;
   top: 0;
   left: 0;
   z-index: -1;
-}
 
+}
 </style>

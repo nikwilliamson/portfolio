@@ -133,7 +133,7 @@ header, section {
 }
 @media only screen and (max-width: 1000px) {
   main {
-    padding: 0 var(--size-space-07);
+    padding: 0 var(--size-space-07) 0 var(--size-space-08);
     margin: 0 var(--size-space-05) 0 0;
   }
 }

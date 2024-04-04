@@ -1,15 +1,18 @@
 <template>
   <link rel="stylesheet" href="https://use.typekit.net/msv4llb.css" />
-  <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#170A32" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#FFCC70" media="(prefers-color-scheme: dark)">
-  <PageHeader title="Hi. I'm Nik. I design products that are easy to use."/>
+  <main>
+  <PageHeader title="Hi. I'm Nik." subtitle="I’m a product designer with a love for design systems, all things accessibility, and well written documentation."/>
   <JobPositions :positions="this.positions"/>
+  </main>
   <div class="background"></div>
 </template>
 
 <script>
 import JobPositions from "./components/positions.vue";
 import PageHeader from "./components/header.vue";
+import "./tokens.css";
 
 export default {
   name: "App",
@@ -83,22 +86,41 @@ export default {
 </script>
 
 <style>
+
 * {
   font-family: "proxima-nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+}
+html {
+  font-size: var(--font-size-base);
 }
 body { 
   background: transparent;
-  margin: 0;
-  padding: 0;
+  
+}
+main {
+  display: grid;
+  padding: 0 10vw;
+  margin: 0 1.5rem 0 0;
+  background: var(--color-background);
+  min-height: 100vh;
 }
 .background {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), #FFCC70, #C850C0, #4158D0) no-repeat 0 0;
+  background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), var(--color-yellow), var(--color-pink), var(--color-blue)) no-repeat 0 0;
   top: 0;
   left: 0;
   z-index: -1;
 }
-
+@media only screen and (max-width: 1000px) {
+  main {
+    padding: 0 2rem;
+    margin: 0 1rem 0 0;
+  }
+}
 </style>

@@ -1,30 +1,50 @@
 <template>
-  <div class="header">
-    <svg class="logo" width="13" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.355 0 2.818.185 0 17.975l5.304-1.709L1.673 32 13 9.718l-6.251 1.886L11.355 0Z" fill="#FFCC70"/></svg>
-      <div>
-        <h1>{{ title }}</h1>
-        <NWGlowButton v-if="buttonLabel" buttonType="buttonType" :label="buttonLabel" />
+  <header class="header">
+    <svg
+      class="logo"
+      width="23"
+      height="64"
+      viewBox="0 0 23 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19.7622 0L4.90434 0.369927L0 35.9521L9.2317 32.5331L2.91164 64L22.6738 19.4359L11.7457 23.2081L19.7622 0Z"
+      />
+    </svg>
+    <div class="title">
+      <h1>{{ title }}</h1>
+      <h2>{{ subtitle }}</h2>
+      <NWGlowButton v-if="buttonLabel" buttonType="buttonType" :label="buttonLabel" />
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
-import NWGlowButton from "./glowButton.vue";
+import NWGlowButton from './glowButton.vue'
 export default {
-  name: "PageHeader",
+  name: 'PageHeader',
   components: { NWGlowButton },
   props: {
     title: String,
+    subtitle: String,
     buttonLabel: String,
-    buttonType: Option,
-  },
-};
+    buttonType: Option
+  }
+}
 </script>
 
 <style scoped>
+header {
+  padding: calc(8 * var(--font-size-base)) 0;
+}
+
 .logo {
-  margin: 2rem 0;
+  margin-bottom: 2rem;
   height: 2rem;
+  fill: var(--color-pink);
+  height: 64px;
+  width: auto;
 }
 .pageTitle {
   display: flex;
@@ -35,27 +55,45 @@ button {
   margin-left: auto;
 }
 
-.header {
-  background: #232830;
-  color: #fff;
-  padding: 8rem 10vw 10rem;
-  box-shadow: 0 0 1rem 0.25rem rgba(0, 0, 0, 0.2);
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 1.5rem;
 }
 
 h1 {
-  color: #c0c5ce;
-  font-weight: 400;
-  font-size: 1.777rem;
+  font-size: var(--font-size-110);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+}
+h2 {
+  font-size: var(--font-size-70);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-medium);
+  width: 100%;
+  max-width: var(--size-typography-max-width);
 }
 
 @media only screen and (max-width: 1000px) {
-  .header {
-    padding: 3rem 10vw 4rem;
+  header {
+    padding: calc(4 * var(--font-size-base)) 0;
+  }
+
+  .logo {
+    margin-bottom: 1.5rem;
+    height: 2rem;
+    fill: var(--color-pink);
+    height: 2rem;
+    width: auto;
   }
   h1 {
-    color: #c0c5ce;
-    font-weight: 400;
-    font-size: 1.333rem;
+    font-size: var(--font-size-80);
+  }
+  h2 {
+    font-size: var(--font-size-60);
+    line-height: var(--line-height-base);
   }
 }
 </style>

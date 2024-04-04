@@ -1,6 +1,6 @@
 <template>
   <div class="pageTitle light">
-    <h2> {{ title }}</h2>
+    <h3> {{ title }}</h3>
     <NWButton v-if="buttonLabel" :buttonType="buttonType" :label="buttonLabel" />
   </div>
 </template>
@@ -27,18 +27,22 @@ export default {
 .button, button {
     margin-left: auto;
 }
-.light h2 {
-  color: #c0c5ce;
-  font-weight: 400;
-  margin: 0;
+
+h3 {
+  font-size: var(--font-size-50);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-50);
+  margin-bottom: 2rem;
 }
 
-h2 {
-  font-size: 1.777rem;
+.light h3 {
+  color: var(--color-pink);
 }
+
 @media (max-width: 1000px) {
-  h2 {
-    font-size: 1.333rem;
+  h3 {
+    margin-bottom: 1.5rem;
+
   }
 }
 

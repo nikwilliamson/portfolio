@@ -56,7 +56,7 @@
     color: white;
   }
   .header {
-    background: #232830;
+    background: #170A32;
     color: #fff;
     padding: 8rem 10vw 10rem;
     box-shadow: 0 0 1rem 0.25rem rgba(0, 0, 0, 0.2);

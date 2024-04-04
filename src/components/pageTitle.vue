@@ -1,5 +1,5 @@
 <template>
-  <div class="pageTitle light">
+  <div class="pageTitle">
     <h3> {{ title }}</h3>
     <NWButton v-if="buttonLabel" :buttonType="buttonType" :label="buttonLabel" />
   </div>
@@ -33,10 +33,7 @@ h3 {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-50);
   margin-bottom: var(--size-space-07);
-}
-
-.light h3 {
-  color: var(--color-pink);
+  color: var(--color-title);
 }
 
 @media (max-width: 1000px) {

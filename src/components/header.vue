@@ -42,7 +42,7 @@ header {
 .logo {
   margin-bottom: var(--size-space-07);
   height: var(--size-space-07);
-  fill: var(--color-pink);
+  fill: var(--color-logo);
   height: 64px;
   width: auto;
 }
@@ -84,7 +84,7 @@ h2 {
   .logo {
     margin-bottom: var(--size-space-06);
     height: var(--size-space-07);
-    fill: var(--color-pink);
+    fill: var(--color-logo);
     height: var(--size-space-07);
     width: auto;
   }

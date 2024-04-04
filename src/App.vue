@@ -23,19 +23,39 @@ export default {
     };
   },
   async created() {
-    this.positions = await this.getPositions();
+  this.positions = await this.getPositions();
 
-    const root = document.documentElement;
-    
-    document.addEventListener('mousemove', evt => {
-      
-        let x = evt.clientX / innerWidth;
-        let y = evt.clientY / innerHeight;
-        
-        root.style.setProperty('--mouse-x', x);
-        root.style.setProperty('--mouse-y', y);
-    });
-  },
+  const root = document.documentElement;
+
+  // Function to update the CSS variables based on the event
+  const updatePosition = (x, y) => {
+    // Convert the x and y positions to a value between 0 and 1
+    let normalizedX = x / window.innerWidth;
+    let normalizedY = y / window.innerHeight;
+
+    // Update the CSS variables
+    root.style.setProperty('--mouse-x', normalizedX);
+    root.style.setProperty('--mouse-y', normalizedY);
+  };
+
+  // Handle mouse move
+  document.addEventListener('mousemove', evt => {
+    updatePosition(evt.clientX, evt.clientY);
+  });
+
+  // Handle touch start and move without preventing default behavior
+  const handleTouch = evt => {
+    if (evt.touches.length > 0) {
+      // Use the first touch point
+      let touch = evt.touches[0];
+      updatePosition(touch.clientX, touch.clientY);
+    }
+  };
+
+  document.addEventListener('touchstart', handleTouch);
+  document.addEventListener('touchmove', handleTouch);
+},
+
 
   
   methods: {
@@ -98,32 +118,32 @@ html {
   font-size: var(--font-size-base);
 }
 body { 
-  background: transparent;
+  background: var(--color-background);
   
 }
 ::-moz-selection { /* Code for Firefox */
   color: var(-color-text);
-  background: var(--color-pink);
+  background: var(--color-highlight);
 }
 
 ::selection {
   color: var(-color-text);
-  background: var(--color-pink);
+  background: var(--color-highlight);
 }
 main {
   display: grid;
   padding: 0 10vw;
-  margin: 0 var(--size-space-06) 0 0;
+  margin: 0 var(--size-gradient-border-width) 0 0;
   background: var(--color-background);
   min-height: 100vh;
 }
 .background {
-  width: 100vw;
-  height: 100vh;
+  width: var(--size-gradient-border-width);
   position: fixed;
   background: transparent radial-gradient(circle at calc(var(--mouse-x, 0) * 100%) calc(var(--mouse-y, 0) * 100%), var(--color-yellow), var(--color-pink), var(--color-blue)) no-repeat 0 0;
+  right: 0;
   top: 0;
-  left: 0;
+  bottom: 0;
   z-index: -1;
 }
 
@@ -132,9 +152,12 @@ header, section {
   margin: 0 auto;
 }
 @media only screen and (max-width: 1000px) {
+  :root {
+  --size-gradient-border-width: var(--size-space-03);
+  }
   main {
     padding: 0 var(--size-space-07) 0 var(--size-space-08);
-    margin: 0 var(--size-space-05) 0 0;
+    margin: 0 var(--size-gradient-border-width) 0 0;
   }
 }
 </style>

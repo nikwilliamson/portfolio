@@ -1,8 +1,8 @@
 <template>
   <div class="job">
     <h4 class="company">{{ company }}</h4>
-    <div class="title-wrapper">
-      <h5 class="title">{{ title }}</h5>
+    <div class="position-wrapper">
+      <h5 class="position">{{ title }}</h5>
       <p class="date" v-if="endDate">
         {{ moment(startDate).format('MMMM YYYY') }} – {{ moment(endDate).format('MMMM YYYY') }}
       </p>
@@ -58,19 +58,19 @@ h4.company {
   letter-spacing: var(--letter-spacing-tight);
 }
 
-.title-wrapper {
+.position-wrapper {
   display: flex;
   gap: var(--size-space-03);
   margin-bottom: var(--size-space-07);
   flex-direction: column;
 }
 
-h5.title {
+h5.position {
   font-size: var(--font-size-70);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-yellow);
+  color: var(--color-position);
   flex: 1;
 }
 
@@ -95,9 +95,6 @@ h6,
   margin-top: var(--size-space-07);
 }
 
-ul {
-}
-
 li {
   margin: var(--size-space-01) var(--size-space-06);
 }
@@ -110,7 +107,7 @@ li + li {margin-top: var(--size-space-05);}
     font-size: var(--font-size-50);
   }
   li {
-    margin: 0.563rem 1rem;
+    margin: var(--size-space-03) var(--size-space-05);
 
     font-size: var(--font-size-50);
     line-height: var(--line-height-normal);

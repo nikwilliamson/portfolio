@@ -60,9 +60,9 @@ h4.company {
 
 .title-wrapper {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  align-items: center;
+  gap: var(--size-space-03);
+  margin-bottom: var(--size-space-07);
+  flex-direction: column;
 }
 
 h5.title {
@@ -92,17 +92,17 @@ h6,
 }
 
 .description p + ul {
-  margin-top: 2rem;
+  margin-top: var(--size-space-07);
 }
 
 ul {
 }
 
 li {
-  margin: 0.563rem 1.33rem;
+  margin: var(--size-space-01) var(--size-space-06);
 }
 
-li + li {margin-top: 1rem;}
+li + li {margin-top: var(--size-space-05);}
 
 
 @media only screen and (max-width: 1000px) {
@@ -126,7 +126,7 @@ li + li {margin-top: 1rem;}
   .title-wrapper {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--size-space-06);
 }
   h5.title {
     font-size: var(--font-size-50);

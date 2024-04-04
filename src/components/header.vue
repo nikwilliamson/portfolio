@@ -40,8 +40,8 @@ header {
 }
 
 .logo {
-  margin-bottom: 2rem;
-  height: 2rem;
+  margin-bottom: var(--size-space-07);
+  height: var(--size-space-07);
   fill: var(--color-pink);
   height: 64px;
   width: auto;
@@ -60,7 +60,7 @@ button {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  gap: 1.5rem;
+  gap: var(--size-space-06);
 }
 
 h1 {
@@ -82,10 +82,10 @@ h2 {
   }
 
   .logo {
-    margin-bottom: 1.5rem;
-    height: 2rem;
+    margin-bottom: var(--size-space-06);
+    height: var(--size-space-07);
     fill: var(--color-pink);
-    height: 2rem;
+    height: var(--size-space-07);
     width: auto;
   }
   h1 {

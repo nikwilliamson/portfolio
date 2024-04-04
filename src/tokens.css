@@ -23,10 +23,23 @@
     --color-pink: #C850C0;
     --color-blue: #4158D0;
     --color-yellow: #FFCC70;
+
     
     --font-weight-bold: 700;
     --font-weight-medium: 400;
 
     --size-typography-max-width: 80ch;
     --letter-spacing-tight: -3%;
+
+    --size-space-01: 0.125rem;
+    --size-space-02: 0.25rem;
+    --size-space-03: 0.5rem;
+    --size-space-04: 0.75rem;
+    --size-space-05: 1rem;
+    --size-space-06: 1.5rem;
+    --size-space-07: 2rem;
+    --size-space-08: 2.5rem;
+    --size-space-09: 3rem;
+    --size-space-10: 3.5rem;
+
 }

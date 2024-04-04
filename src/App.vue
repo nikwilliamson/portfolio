@@ -101,10 +101,19 @@ body {
   background: transparent;
   
 }
+::-moz-selection { /* Code for Firefox */
+  color: var(-color-text);
+  background: var(--color-pink);
+}
+
+::selection {
+  color: var(-color-text);
+  background: var(--color-pink);
+}
 main {
   display: grid;
   padding: 0 10vw;
-  margin: 0 1.5rem 0 0;
+  margin: 0 var(--size-space-06) 0 0;
   background: var(--color-background);
   min-height: 100vh;
 }
@@ -117,10 +126,15 @@ main {
   left: 0;
   z-index: -1;
 }
+
+header, section {
+  max-width: 80ch;
+  margin: 0 auto;
+}
 @media only screen and (max-width: 1000px) {
   main {
-    padding: 0 2rem;
-    margin: 0 1rem 0 0;
+    padding: 0 var(--size-space-07);
+    margin: 0 var(--size-space-05) 0 0;
   }
 }
 </style>

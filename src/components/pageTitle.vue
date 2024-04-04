@@ -32,7 +32,7 @@ h3 {
   font-size: var(--font-size-50);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-50);
-  margin-bottom: 2rem;
+  margin-bottom: var(--size-space-07);
 }
 
 .light h3 {
@@ -41,7 +41,7 @@ h3 {
 
 @media (max-width: 1000px) {
   h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--size-space-06);
 
   }
 }

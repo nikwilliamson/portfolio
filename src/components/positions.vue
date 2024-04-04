@@ -1,5 +1,5 @@
 <template>
-  <div class="positions">
+  <section class="positions">
     <PageTitle title="Experience" />
     <div class="jobs">
       <JobPosition
@@ -13,7 +13,7 @@
         v-bind:endDate="position.endDate"
       />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -55,7 +55,6 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--color-text);
 }
 html {
   font-size: var(--font-size-base);
@@ -78,6 +77,10 @@ main {
   margin: 0 var(--size-gradient-border-width);
   background: var(--color-background);
   min-height: 100vh;
+  color: var(--color-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
 }
 
 main.blog-active {
@@ -110,7 +113,6 @@ section {
 }
 @media only screen and (max-width: 1000px) {
   main {
-    
     margin: 0 var(--size-gradient-border-width) 0 0;
   }
 }

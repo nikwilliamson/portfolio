@@ -25,7 +25,7 @@ export default {
   name: 'JobPositions',
   components: { JobPosition, PageTitle },
   props: {
-    positions: Object,
+    positions: Array,
     pageTitle: String,
     buttonLabel: String
   },
@@ -36,17 +36,18 @@ export default {
 </script>
 
 <style scoped>
+.positions {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--size-section-spacing);
+}
+
 .jobs {
+  max-width: var(--size-section-max-width);
   display: grid;
-  grid-row-gap: calc(8 * var(--font-size-base));
-  margin-bottom: 8rem;
+  grid-row-gap: var(--size-section-spacing-vertical);
+  margin-bottom: var(--size-component-spacing-loose);
+  margin: 0 auto;
 }
-@media (max-width: 1000px) {
-  .jobs {
-    display: grid;
-    grid-row-gap: calc(4 * var(--font-size-base));
-  }
-}
-/* .date { grid-area: 1 / 1 / 2 / 2; }  */
-/* .details { grid-area: 1 / 2 / 2 / 6; }  */
+
 </style>

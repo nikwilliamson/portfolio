@@ -1,31 +1,32 @@
 <template>
   <div class="pageTitle">
-    <h3> {{ title }}</h3>
-    <NWButton v-if="buttonLabel" :buttonType="buttonType" :label="buttonLabel" />
+    <h3>{{ title }}</h3>
   </div>
 </template>
 
 <script>
-import NWButton from "./button.vue";
 export default {
-  name: "PageTitle",
-  components: { NWButton },
+  name: 'PageTitle',
   props: {
     title: String,
     buttonLabel: String,
     buttonType: Option,
     theme: Option
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
 .pageTitle {
-    display:flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  max-width: var(--size-section-max-width);
+  margin: 0 auto;
+  width: 100%;
 }
-.button, button {
-    margin-left: auto;
+.button,
+button {
+  margin-left: auto;
 }
 
 h3 {
@@ -39,8 +40,6 @@ h3 {
 @media (max-width: 1000px) {
   h3 {
     margin-bottom: var(--size-space-06);
-
   }
 }
-
 </style>

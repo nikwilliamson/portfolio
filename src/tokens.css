@@ -25,6 +25,9 @@
     --color-yellow: #FFCC70;
 
     --color-background: var(--color-black);
+    --color-blog-background: var(--color-blue);
+    --color-blog-card-title: var(--color-white);
+    --color-blog-card-text: var(--color-white);
     --color-text: var(--color-white);
     --color-title: var(--color-pink);
     --color-position: var(--color-yellow);
@@ -49,9 +52,48 @@
     --size-space-09: 3rem;
     --size-space-10: 3.5rem;
 
+    --size-section-max-width: 80ch;
+    --size-section-spacing-vertical: calc(8 * var(--font-size-base));
+    --size-blog-spacing-horizontal: calc(3 * var(--font-size-base));
     --size-gradient-border-width: var(--size-space-05);
+
+    --size-section-spacing: var(--size-section-spacing-vertical) 0;
+
+    --font-size-title: var(--font-size-90);
+    --font-size-subtitle: var(--font-size-70);
+    --font-size-leading: var(--font-size-70);
+    --font-size-header-title: var(--font-size-110);
+    --font-size-body: var(--font-size-60);
+    --font-size-date: var(--font-size-50);
+    
+    --size-component-spacing-loose: var(--size-space-07);
+    --size-component-spacing-base: var(--size-space-05);
+    --size-component-spacing-tight: var(--size-space-03);
+
+    --size-logo-height: var(--size-space-10);
+    --size-logo-spacing: var(--size-component-spacing-loose);
 }
 
+
+@media only screen and (max-width: 1000px) {
+    :root {
+        --size-section-spacing-vertical: calc(6 * var(--font-size-base));
+        --size-section-spacing: var(--size-section-spacing-vertical) var(--size-space-07) var(--size-section-spacing-vertical) var(--size-space-08);
+
+        --font-size-title: var(--font-size-70);
+        --font-size-subtitle: var(--font-size-60);
+        --font-size-leading: var(--font-size-60);
+        --font-size-header-title: var(--font-size-80);
+        --font-size-date: var(--font-size-40);
+        --font-size-body: var(--font-size-50);
+
+        --size-logo-height: var(--size-space-08);
+        --size-logo-spacing: var(--size-component-spacing-base);
+
+        --size-gradient-border-width: var(--size-space-03);
+        
+    }
+}
 @media (prefers-color-scheme: light) {
     :root {
         --color-background: var(--color-white);

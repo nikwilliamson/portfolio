@@ -9,8 +9,8 @@
       <p class="date" v-else>{{ moment(startDate).format('MMMM YYYY') }} – Present</p>
     </div>
     <div class="description">
-    <RichTextRenderer :document="description" />
-  </div>
+      <RichTextRenderer :document="description" />
+    </div>
   </div>
 </template>
 
@@ -45,14 +45,13 @@ export default {
 </script>
 
 <style>
-
 .job {
   display: grid;
   grid-template-rows: 1fr;
 }
 
 h4.company {
-  font-size: var(--font-size-90);
+  font-size: var(--font-size-title);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -60,13 +59,13 @@ h4.company {
 
 .position-wrapper {
   display: flex;
-  gap: var(--size-space-03);
-  margin-bottom: var(--size-space-07);
+  gap: var(--size-component-spacing-tight);
+  margin-bottom: var(--size-component-spacing-loose);
   flex-direction: column;
 }
 
 h5.position {
-  font-size: var(--font-size-70);
+  font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -76,7 +75,7 @@ h5.position {
 
 h6,
 .date {
-  font-size: var(--font-size-50);
+  font-size: var(--font-size-date);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
@@ -84,54 +83,22 @@ h6,
 }
 
 .description {
-  font-size: var(--font-size-60);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-normal);
-  max-width: 80ch;
   width: 100%;
 }
 
 .description p + ul {
-  margin-top: var(--size-space-07);
+  margin-top: var(--size-component-spacing-loose);
 }
 
 li {
   margin: var(--size-space-01) var(--size-space-06);
 }
 
-li + li {margin-top: var(--size-space-05);}
-
-
-@media only screen and (max-width: 1000px) {
-  p {
-    font-size: var(--font-size-50);
-  }
-  li {
-    margin: var(--size-space-03) var(--size-space-05);
-
-    font-size: var(--font-size-50);
-    line-height: var(--line-height-normal);
-  }
-
-  li p {
-    font-size: var(--font-size-50);
-    line-height: var(--line-height-normal);
-  }
-  h4.company {
-    font-size: var(--font-size-60);
-  }
-  .title-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: var(--size-space-06);
+li + li {
+  margin-top: var(--size-component-spacing-base);
 }
-  h5.title {
-    font-size: var(--font-size-50);
-  }
 
-  h6,
-  .date {
-    font-size: var(--font-size-40);
-  }
-}
 </style>

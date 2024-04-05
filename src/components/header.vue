@@ -2,8 +2,6 @@
   <header class="header">
     <svg
       class="logo"
-      width="23"
-      height="64"
       viewBox="0 0 23 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -36,14 +34,14 @@ export default {
 
 <style scoped>
 header {
-  padding: calc(8 * var(--font-size-base)) 0;
+  padding: var(--size-section-spacing);
+  max-width: var(--size-section-max-width);
 }
 
 .logo {
-  margin-bottom: var(--size-space-07);
-  height: var(--size-space-07);
+  margin-bottom: var(--size-logo-spacing);
+  height: var(--size-logo-height);
   fill: var(--color-logo);
-  height: 64px;
   width: auto;
 }
 .pageTitle {
@@ -60,40 +58,18 @@ button {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  gap: var(--size-space-06);
+  gap: var(--size-component-spacing-base);
 }
 
 h1 {
-  font-size: var(--font-size-110);
+  font-size: var(--font-size-header-title);
   line-height: var(--line-height-tight);
   font-weight: var(--font-weight-bold);
 }
 h2 {
-  font-size: var(--font-size-70);
-  line-height: var(--line-height-tight);
+  font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-medium);
   width: 100%;
   max-width: var(--size-typography-max-width);
-}
-
-@media only screen and (max-width: 1000px) {
-  header {
-    padding: calc(4 * var(--font-size-base)) 0;
-  }
-
-  .logo {
-    margin-bottom: var(--size-space-06);
-    height: var(--size-space-07);
-    fill: var(--color-logo);
-    height: var(--size-space-07);
-    width: auto;
-  }
-  h1 {
-    font-size: var(--font-size-80);
-  }
-  h2 {
-    font-size: var(--font-size-60);
-    line-height: var(--line-height-base);
-  }
 }
 </style>

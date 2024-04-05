@@ -19,12 +19,12 @@ const routes = [
     name: 'blog', 
     path: '/blog/:slug', // Correct path for dynamic segments
     components: {
-      blog: () => import('../views/blogPost.vue'), // Correctly using named views
+      blog: () => import('../views/blogPost.vue'), 
     },
     props: {
       blog: true,
     },
-    beforeEnter: [keepDefaultView], // Keeping your custom navigation guard logic
+    beforeEnter: [keepDefaultView], 
   },
 ];
 

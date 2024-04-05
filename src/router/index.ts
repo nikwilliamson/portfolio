@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/home.vue';
 
-function keepDefaultView(to, from) {
+function keepDefaultView(to: any, from: any) {
   if (from.matched.length) {
     to.matched[0].components.default = from.matched[0].components.default;
   } else {

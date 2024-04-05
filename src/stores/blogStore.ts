@@ -63,7 +63,7 @@ export const useBlogStore = defineStore('blog', {
       }
     },
     getPostBySlug(this: any, slug: string) { // Specify the type of 'this' and 'slug'
-      return this.blogPosts.find(post => post.slug === slug);
+      return this.blogPosts.find((post: any) => post.slug === slug);
     },
   },
 });

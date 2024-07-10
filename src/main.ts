@@ -11,5 +11,5 @@ app.use(createPinia())
 app.use(router)
 
 app.use(VueGtag, {
-  config: { id: "GA_MEASUREMENT_ID" }
+  config: { id: "G-JV19FZ8F7V" }
 }).mount("#app");

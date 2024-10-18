@@ -223,6 +223,11 @@ button {
     display: block;
 }
 
+.card-selector input[type="checkbox"], .card-selector input[type="radio"] {
+    height: 0;
+    width: 0;
+}
+
 .card-selector input[type="checkbox"]:focus-visible + .card-content {
     outline-color: var(--input-border-color-focus);
     box-shadow: none;

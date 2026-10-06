@@ -37,7 +37,7 @@
 }
 
 * { box-sizing: border-box; }
-body { background: var(--color-ground); color: var(--color-ink); font: var(--type-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+body { margin: 0; background: var(--color-ground); color: var(--color-ink); font: var(--type-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 html { overflow-x: clip; }
 h1, h2, h3, h4, p, ul { margin: 0; }
 h1, h2, h3 { text-wrap: balance; }
@@ -178,7 +178,7 @@ h1, h2, h3 { text-wrap: balance; }
 .goo-btn { position: relative; display: inline-grid; place-items: center; width: 230px; height: 64px; border: 0; padding: 0; background: none; cursor: pointer; font: 700 18px/1 var(--font-text); color: var(--color-on-fill); }
 .goo-btn .shapes { position: absolute; inset: -100px; filter: url(#goo); pointer-events: none; }
 .goo-btn .shapes span { position: absolute; background: var(--color-lime); border-radius: var(--radius-pill); }
-.goo-btn .shapes .blob { left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.goo-btn .shapes .blob { left: 0; top: 0; border-radius: 50%; }
 .goo-btn .txt { position: relative; }
 .btn-soft { border: 0; border-radius: var(--radius-pill); padding: 18px 24px; font: var(--type-body); font-weight: 600; line-height: 1; background: var(--color-ground); color: var(--color-ink); cursor: pointer; transition: transform .4s var(--spring); }
 .btn-soft:hover { transform: scale(1.05); }
@@ -196,14 +196,14 @@ h1, h2, h3 { text-wrap: balance; }
 .transition .page .tiles i { aspect-ratio: 1; border-radius: 12px; }
 .transition .sweep { position: absolute; inset: 0; pointer-events: none; }
 .transition .sweep .layer { position: absolute; inset: 0; filter: url(#goo); }
-.transition .sweep .layer i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.transition .sweep .layer i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .transition .row { justify-content: space-between; }
 @media (max-width: 640px) { .transitions { grid-template-columns: minmax(0, 1fr); } }
 
 /* Visuals */
 .goo-stage { position: relative; height: clamp(300px, 34vw, 440px); border-radius: var(--radius-lg); background: var(--color-surface); overflow: hidden; touch-action: pan-y; }
 .goo-stage .field { position: absolute; inset: 0; filter: url(#goo); }
-.goo-stage .field i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.goo-stage .field i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .browser { background: var(--color-ink); border-radius: var(--radius-lg); padding: 12px; }
 .browser .bar { display: flex; gap: 6px; padding: 4px 6px 12px; }
 .browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,240,255,.35); }
@@ -226,7 +226,7 @@ h1, h2, h3 { text-wrap: balance; }
 .pairings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .pairings .post { aspect-ratio: 3 / 2; padding: clamp(10px, 1.4vw, 16px); border-radius: var(--radius-md); }
 .mini { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.mini i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.mini i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .pairings .post .name { margin-top: auto; font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
 @media (max-width: 640px) { .pairings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .socials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -247,10 +247,9 @@ h1, h2, h3 { text-wrap: balance; }
 </style>
 </head>
 <body>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="goo"/>
       <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
@@ -546,7 +545,7 @@ h1, h2, h3 { text-wrap: balance; }
     // With a fill, colour is set flat rather than read back from the blur, which leaves faint banding inside big shapes
     const rgb = fill ? [1, 3, 5].map(i => +(parseInt(fill.slice(i, i + 2), 16) / 255).toFixed(4)) : null;
     const rows = rgb ? `0 0 0 0 ${rgb[0]}  0 0 0 0 ${rgb[1]}  0 0 0 0 ${rgb[2]}` : '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0';
-    if (!document.getElementById(id)) gooDefs.insertAdjacentHTML('beforeend', `<filter id="${id}" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${blur}" result="blur"/><feColorMatrix in="blur" mode="matrix" values="${rows}  0 0 0 ${k} ${-(k * cut).toFixed(2)}" result="goo"/></filter>`);
+    if (!document.getElementById(id)) gooDefs.insertAdjacentHTML('beforeend', `<filter id="${id}" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${blur}" result="blur"/><feColorMatrix in="blur" mode="matrix" values="${rows}  0 0 0 ${k} ${-(k * cut).toFixed(2)}" result="goo"/></filter>`);
     return id;
   };
   // Puddle settings, tuned by Nik in the puddle playground. Ranges are [min, max], drawn per surface.
@@ -769,6 +768,7 @@ h1, h2, h3 { text-wrap: balance; }
   // drips down over the page in grape like warm goo, swaps it while covered, and slides off the bottom.
   // One goo filter per stage.
   const sweeps = { melt: '#7A35FF' };
+  const toHex = c => `#${(c.match(/\d+/g) || []).slice(0, 3).map(n => (+n).toString(16).padStart(2, '0')).join('')}`;
   const ease = x => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
   const clamp01 = x => Math.min(Math.max(x, 0), 1);
   document.querySelectorAll('[data-sweep]').forEach(card => {
@@ -870,7 +870,10 @@ h1, h2, h3 { text-wrap: balance; }
       deal();
       // Wash floods in with the background of the page it's going to
       const next = [...pages].find(pg => pg.hidden);
-      blobs.forEach(b => (b.el.style.background = sweeps[kind] || getComputedStyle(next).backgroundColor));
+      const fill = sweeps[kind] || toHex(getComputedStyle(next).backgroundColor);
+      blobs.forEach(b => (b.el.style.background = fill));
+      // One flat colour, so the goo is the thresholded blur alone (no composite pass over the source)
+      layer.style.filter = `url(#${gooFilter(14, 24, 0.42, fill)})`;
       const t0 = performance.now(), end = melt ? pourEnd : stays ? total + HOLD + 0.05 : total * 2 + HOLD + 0.05;
       let swapped = false;
       const tick = now => {
@@ -1011,6 +1014,314 @@ h1, h2, h3 { text-wrap: balance; }
     const loop = () => { if (visible) frame(performance.now() / 1000, false); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
   });
+
+  // Safari won't run SVG filters on HTML, so there every goo layer is redrawn from its hidden HTML blobs
+  // (the renderers above stay the source of truth). Moving layers render through one shared WebGL context:
+  // the blobs are drawn at low resolution, blurred on the GPU, then thresholded at full resolution, so edges
+  // stay crisp and Safari never re-runs a CPU filter per frame. Static puddles mirror into a filtered SVG
+  // <g> once. Other browsers keep the CSS filter as is. ?mirror forces the Safari path for testing.
+  const ua = navigator.userAgent, query = new URLSearchParams(location.search);
+  const needsMirror = (/AppleWebKit/.test(ua) && !/Chrome\/|Chromium|Firefox\//.test(ua)) || query.has('mirror');
+  if (!needsMirror) return;
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const LAYERS = '.deco, .mini, .goo-stage .field, .goo-btn .shapes, .transition .sweep .layer, .opener .goo, .site .goo, .column .liquid';
+  const STATIC = '.deco';
+  const CORNERS = ['borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'];
+  const DPR = Math.min(devicePixelRatio || 1, 3);
+  const mirrors = new WeakMap(), blobs = new WeakMap();
+  let clones = 0;
+  const rrect = (w, h, [a, b, c, d]) => `M${a},0H${w - b}A${b},${b} 0 0 1 ${w},${b}V${h - c}A${c},${c} 0 0 1 ${w - c},${h}H${d}A${d},${d} 0 0 1 0,${h - d}V${a}A${a},${a} 0 0 1 ${a},0Z`;
+  const rgba = c => { const n = (c.match(/[\d.]+/g) || [0, 0, 0, 0]).map(Number); return [n[0] / 255, n[1] / 255, n[2] / 255, n[3] ?? 1]; };
+
+  // What a goo filter does, read once per filter id: blur, alpha threshold, flat fill or source colour, atop
+  const specs = new Map();
+  const specOf = id => {
+    if (specs.has(id)) return specs.get(id);
+    const f = document.getElementById(id);
+    if (!f) return null;
+    const v = f.querySelector('feColorMatrix').getAttribute('values').trim().split(/[\s,]+/).map(Number);
+    const flat = [0, 1, 2, 3].every(i => v[i] === 0);
+    const spec = { blur: parseFloat(f.querySelector('feGaussianBlur').getAttribute('stdDeviation')) || 0, k: v[18], off: v[19], fill: flat ? [v[4], v[9], v[14]] : null, atop: !!f.querySelector('feComposite[operator=atop]') };
+    specs.set(id, spec);
+    return spec;
+  };
+
+  const GL = (() => {
+    // Offscreen, each finished frame is handed to its layer as a bitmap. Copying a shared on-page canvas with
+    // drawImage can be deferred until after the next layer has drawn over it, which tears blobs apart.
+    const opts = { alpha: true, premultipliedAlpha: true, antialias: false, preserveDrawingBuffer: true };
+    let canvas = typeof OffscreenCanvas === 'function' ? new OffscreenCanvas(1, 1) : null;
+    let gl = canvas?.getContext('webgl', opts);
+    const bitmap = !!gl && typeof canvas.transferToImageBitmap === 'function';
+    if (!gl) { canvas = document.createElement('canvas'); gl = canvas.getContext('webgl', opts); }
+    if (!gl) return null;
+    // Derivatives let the threshold anti-alias over exactly one device pixel, whatever the blur
+    const crisp = !!gl.getExtension('OES_standard_derivatives');
+    // Half-float targets: 8-bit alpha steps are coarse where the blurred field is flat, which wobbles the outline
+    const half = gl.getExtension('OES_texture_half_float');
+    let texType = half && gl.getExtension('OES_texture_half_float_linear') && gl.getExtension('EXT_color_buffer_half_float') ? half.HALF_FLOAT_OES : gl.UNSIGNED_BYTE;
+    const prog = (vs, fs) => {
+      const p = gl.createProgram();
+      [[gl.VERTEX_SHADER, vs], [gl.FRAGMENT_SHADER, fs]].forEach(([t, src]) => { const s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); gl.attachShader(p, s); });
+      gl.bindAttribLocation(p, 0, 'q');
+      gl.linkProgram(p);
+      const u = {};
+      for (let i = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); i--;) { const n = gl.getActiveUniform(p, i).name; u[n] = gl.getUniformLocation(p, n); }
+      return { p, u };
+    };
+    // A blob is a quad over its box (plus an edge margin) in its own CSS space, mapped to the target by its
+    // transform; the fragment works out its signed distance to the ellipse or rounded rect and anti-aliases it
+    const shape = prog(`
+      attribute vec2 q; uniform mat3 m; uniform vec2 size, res; uniform float pad, fy; varying vec2 p;
+      void main() { p = q * (size + 2.0 * pad) - pad; vec3 t = m * vec3(p, 1.0); vec2 c = t.xy / res * 2.0 - 1.0; gl_Position = vec4(c.x, c.y * fy, 0.0, 1.0); }`, `
+      precision highp float; uniform vec2 size; uniform vec4 radii, color; uniform float round, aa, lin; varying vec2 p;
+      void main() {
+        vec2 h = size * 0.5, c = p - h; float d;
+        if (round > 0.5) { vec2 r = max(h, vec2(0.001)); float k0 = length(c / r), k1 = length(c / (r * r)); d = k0 * (k0 - 1.0) / max(k1, 1e-4); }
+        else { float r = c.x < 0.0 ? (c.y < 0.0 ? radii.x : radii.w) : (c.y < 0.0 ? radii.y : radii.z); vec2 e = abs(c) - h + r; d = min(max(e.x, e.y), 0.0) + length(max(e, 0.0)) - r; }
+        // The blur pass mixes colours in linear light, as the CSS goo filter does
+        vec4 col = lin > 0.5 ? vec4(pow(color.rgb / max(color.a, 1e-4), vec3(2.2)) * color.a, color.a) : color;
+        gl_FragColor = col * clamp(0.5 - d / aa, 0.0, 1.0);
+      }`);
+    const QUAD = `attribute vec2 q; varying vec2 uv; void main() { uv = q; gl_Position = vec4(q * 2.0 - 1.0, 0.0, 1.0); }`;
+    const blur = prog(QUAD, `
+      precision highp float; uniform sampler2D tex; uniform vec2 dir, scale; uniform float sigma; varying vec2 uv;
+      void main() {
+        vec4 acc = vec4(0.0); float wsum = 0.0;
+        for (int i = -20; i <= 20; i++) { float x = float(i), w = exp(-x * x / (2.0 * sigma * sigma)); acc += texture2D(tex, (uv * scale) + dir * x) * w; wsum += w; }
+        gl_FragColor = acc / wsum;
+      }`);
+    const thresh = prog(QUAD, `${crisp ? '#extension GL_OES_standard_derivatives : enable\n' : ''}
+      precision highp float; uniform sampler2D tex; uniform vec2 scale, ts; uniform float k, off, solid; uniform vec3 fill; varying vec2 uv;
+      // B-spline upsampling from four bilinear taps, so the threshold's outline is a smooth curve, not facets
+      vec4 cubic(float v) { vec4 n = vec4(1.0, 2.0, 3.0, 4.0) - v, s = n * n * n; float x = s.x, y = s.y - 4.0 * s.x, z = s.z - 4.0 * s.y + 6.0 * s.x; return vec4(x, y, z, 6.0 - x - y - z) / 6.0; }
+      vec4 bicubic(vec2 st) {
+        st = st * ts - 0.5; vec2 f = fract(st); st -= f;
+        vec4 xc = cubic(f.x), yc = cubic(f.y), c = st.xxyy + vec2(-0.5, 1.5).xyxy, s = vec4(xc.xz + xc.yw, yc.xz + yc.yw);
+        vec4 o = (c + vec4(xc.yw, yc.yw) / s) / ts.xxyy;
+        float sx = s.x / (s.x + s.y), sy = s.z / (s.z + s.w);
+        return mix(mix(texture2D(tex, o.yw), texture2D(tex, o.xw), sx), mix(texture2D(tex, o.yz), texture2D(tex, o.xz), sx), sy);
+      }
+      void main() {
+        vec4 b = bicubic(vec2(uv.x, 1.0 - uv.y) * scale);
+        ${crisp ? 'float a = clamp((b.a + off / k) / max(fwidth(b.a), 1e-5) + 0.5, 0.0, 1.0);' : 'float a = clamp(k * b.a + off, 0.0, 1.0);'}
+        vec3 c = solid > 0.5 ? fill : (b.a > 0.0 ? pow(b.rgb / b.a, vec3(1.0 / 2.2)) : vec3(0.0));
+        gl_FragColor = vec4(c * a, a);
+      }`);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 1, 0, 0, 1, 1, 1]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    // Three low-res targets, grown as needed and reused by every layer
+    const targets = [0, 1, 2].map(() => ({ tex: gl.createTexture(), fb: gl.createFramebuffer(), w: 0, h: 0 }));
+    const fit = (t, w, h) => {
+      if (t.w >= w && t.h >= h) return;
+      t.w = Math.max(t.w, w); t.h = Math.max(t.h, h);
+      gl.bindTexture(gl.TEXTURE_2D, t.tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, t.w, t.h, 0, gl.RGBA, texType, null);
+      [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]].forEach(([k, v]) => gl.texParameteri(gl.TEXTURE_2D, k, v));
+      gl.bindFramebuffer(gl.FRAMEBUFFER, t.fb);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t.tex, 0);
+      if (texType !== gl.UNSIGNED_BYTE && gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) {
+        texType = gl.UNSIGNED_BYTE;
+        targets.forEach(o => (o.w = o.h = 0));
+        fit(t, w, h);
+      }
+    };
+    const bindTarget = (t, w, h) => { gl.bindFramebuffer(gl.FRAMEBUFFER, t ? t.fb : null); gl.viewport(0, 0, w, h); };
+    // Low-res targets keep CSS's top row as texel row 0; the canvas (fy -1) is drawn right side up
+    const drawShapes = (shapes, ox, oy, s, w, h, fy) => {
+      gl.useProgram(shape.p);
+      gl.uniform2f(shape.u.res, w, h);
+      gl.uniform1f(shape.u.fy, fy);
+      gl.uniform1f(shape.u.lin, fy > 0 ? 1 : 0);
+      shapes.forEach(b => {
+        if (!b.w || !b.h) return;
+        const [a, bb, c, d, e, f] = b.m, [tx, ty] = b.origin;
+        // CSS: translate(box + origin) · matrix · translate(-origin), then into target pixels
+        const X = b.x + tx + e - a * tx - c * ty - ox, Y = b.y + ty + f - bb * tx - d * ty - oy;
+        const scale = Math.sqrt(Math.abs(a * d - bb * c)) || 1, aa = 1 / (scale * s);
+        gl.uniformMatrix3fv(shape.u.m, false, [a * s, bb * s, 0, c * s, d * s, 0, X * s, Y * s, 1]);
+        gl.uniform2f(shape.u.size, b.w, b.h);
+        gl.uniform1f(shape.u.pad, 2 * aa);
+        gl.uniform1f(shape.u.aa, aa);
+        gl.uniform1f(shape.u.round, b.round ? 1 : 0);
+        gl.uniform4fv(shape.u.radii, b.radii);
+        const [r, g, bl, al] = b.rgba;
+        gl.uniform4f(shape.u.color, r * al, g * al, bl * al, al);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      });
+    };
+    // Render one layer's blobs through its goo filter into a region-sized image, returned as the GL canvas
+    const render = (shapes, spec, [x0, y0, x1, y1]) => {
+      const W = Math.ceil((x1 - x0) * DPR), H = Math.ceil((y1 - y0) * DPR);
+      // The blur runs at a resolution where sigma is ~6 texels: blur only keeps low frequencies, so this loses
+      // nothing the threshold can see, and the 41-tap kernel covers ±3.3 sigma
+      const s = Math.min(DPR, 6 / Math.max(spec.blur, 0.01)), w = Math.max(1, Math.ceil((x1 - x0) * s)), h = Math.max(1, Math.ceil((y1 - y0) * s));
+      targets.forEach(t => fit(t, w, h));
+      const [src, tmp, out] = targets;
+      if (canvas.width !== W || canvas.height !== H) { canvas.width = W; canvas.height = H; }
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.clearColor(0, 0, 0, 0);
+      [src, tmp, out].forEach(t => { bindTarget(t, t.w, t.h); gl.clear(gl.COLOR_BUFFER_BIT); });
+      bindTarget(src, w, h);
+      drawShapes(shapes, x0, y0, s, w, h, 1);
+      gl.disable(gl.BLEND);
+      const pass = (from, to, dx, dy) => {
+        bindTarget(to, w, h);
+        gl.useProgram(blur.p);
+        gl.bindTexture(gl.TEXTURE_2D, from.tex);
+        gl.uniform2f(blur.u.scale, w / from.w, h / from.h);
+        gl.uniform2f(blur.u.dir, dx / from.w, dy / from.h);
+        gl.uniform1f(blur.u.sigma, spec.blur * s);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      };
+      pass(src, tmp, 1, 0);
+      pass(tmp, out, 0, 1);
+      // Full resolution: threshold the upscaled blur, flipped upright
+      bindTarget(null, W, H);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.useProgram(thresh.p);
+      gl.bindTexture(gl.TEXTURE_2D, out.tex);
+      gl.uniform2f(thresh.u.scale, w / out.w, h / out.h);
+      gl.uniform2f(thresh.u.ts, out.w, out.h);
+      gl.uniform1f(thresh.u.k, spec.k);
+      gl.uniform1f(thresh.u.off, spec.off);
+      gl.uniform1f(thresh.u.solid, spec.fill ? 1 : 0);
+      gl.uniform3fv(thresh.u.fill, spec.fill || [0, 0, 0]);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (spec.atop) {
+        // Source atop goo: blob colours sit crisp inside the goo, the necks keep the blurred mix
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.DST_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        drawShapes(shapes, x0, y0, DPR, W, H, -1);
+        gl.disable(gl.BLEND);
+      }
+      return bitmap ? canvas.transferToImageBitmap() : canvas;
+    };
+    return { render, bitmap };
+  })();
+
+  // Each layer's filter region: where its blobs actually are plus the blur's reach, cut to the nearest
+  // clipping ancestor (plus that reach), snapped so small moves don't resize anything
+  const SNAP = 32, snap = (a, b) => [Math.floor(a / SNAP) * SNAP, Math.ceil(b / SNAP) * SNAP];
+  const clipperOf = layer => {
+    for (let el = layer.parentElement; el && el !== document.body; el = el.parentElement) {
+      const s = getComputedStyle(el);
+      if (s.overflowX !== 'visible' || s.overflowY !== 'visible') return el;
+    }
+    return null;
+  };
+  // Static layers: a per-layer clone of the filter with its region pinned, on a filtered SVG <g>
+  const regionFilter = (m, id, [x0, y0, x1, y1]) => {
+    if (m.cloned !== id) {
+      const src = document.getElementById(id);
+      if (!src) return;
+      const f = src.cloneNode(true);
+      f.id = m.fid || (m.fid = `goo-mirror-${++clones}`);
+      f.setAttribute('filterUnits', 'userSpaceOnUse');
+      document.getElementById(m.fid)?.remove();
+      gooDefs.append(f);
+      m.g.setAttribute('filter', `url(#${m.fid})`);
+      m.cloned = id;
+      m.key = null;
+    }
+    const key = `${x0}|${y0}|${x1}|${y1}`;
+    if (m.key === key) return;
+    const f = document.getElementById(m.fid);
+    Object.entries({ x: x0, y: y0, width: Math.max(x1 - x0, 1), height: Math.max(y1 - y0, 1) }).forEach(([k, v]) => f.setAttribute(k, v));
+    m.key = key;
+  };
+  const layerFor = layer => {
+    let m = mirrors.get(layer);
+    if (m && (m.svg || m.canvas).isConnected) return m;
+    const gl = GL && !layer.matches(STATIC);
+    const el = gl ? document.createElement('canvas') : document.createElementNS(SVGNS, 'svg');
+    el.setAttribute('aria-hidden', 'true');
+    el.style.cssText = gl ? 'position:absolute;pointer-events:none' : 'position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none';
+    layer.append(el);
+    // A redraw can wipe the layer (puddles do), so a rebuilt mirror re-links its filter and repaints
+    m = { ...m, visible: true, key: null, cloned: null, clipper: clipperOf(layer) };
+    if (gl) Object.assign(m, { canvas: el, ctx: el.getContext(GL.bitmap ? 'bitmaprenderer' : '2d'), svg: null });
+    else { const g = document.createElementNS(SVGNS, 'g'); el.append(g); Object.assign(m, { svg: el, g, canvas: null }); }
+    new IntersectionObserver(([e]) => (m.visible = e.isIntersecting)).observe(layer);
+    mirrors.set(layer, m);
+    return m;
+  };
+  // Reads first, writes after, so the frame lays out once. A blob is only re-read when its inline style
+  // changed or a CSS animation is moving it; static ones (puddles, settled drops) cost nothing.
+  const mirrorFrame = () => {
+    const jobs = [];
+    document.querySelectorAll(LAYERS).forEach(layer => {
+      const m = layerFor(layer), cs = getComputedStyle(layer), f = cs.filter.match(/#([^"')]+)/);
+      if (f) m.id = f[1];
+      if (!m.visible || !m.id) return;
+      const own = m.svg || m.canvas, els = [...layer.children].filter(c => c !== own), lr = layer.getBoundingClientRect();
+      let changed = !!f;
+      const reads = els.map(el => {
+        let b = blobs.get(el);
+        const style = el.style.cssText;
+        if (b && !b.anim && b.style === style) return b;
+        const s = getComputedStyle(el), w = el.offsetWidth, h = el.offsetHeight, mt = s.transform.match(/matrix\(([^)]+)\)/);
+        b = { ...b, style, anim: s.animationName !== 'none', w, h, x: el.offsetLeft, y: el.offsetTop, fill: s.backgroundColor, rgba: rgba(s.backgroundColor),
+          round: CORNERS.every(k => s[k] === '50%'), radii: CORNERS.map(k => Math.min(parseFloat(s[k]) || 0, Math.min(w, h) / 2)),
+          origin: s.transformOrigin.split(' ').map(parseFloat), transform: s.transform === 'none' ? '' : s.transform.replace(/,/g, ' '),
+          m: mt ? mt[1].split(',').map(Number) : [1, 0, 0, 1, 0, 0], dirty: true };
+        // Where the blob sits on screen, relative to its layer, for the filter region
+        const r = el.getBoundingClientRect();
+        b.box = r.width && r.height ? [r.left - lr.left, r.top - lr.top, r.right - lr.left, r.bottom - lr.top] : null;
+        blobs.set(el, b);
+        changed = true;
+        return b;
+      });
+      const pad = 3 * (specOf(m.id)?.blur || 0), box = [Infinity, Infinity, -Infinity, -Infinity];
+      reads.forEach(b => b.box && b.box.forEach((v, i) => (box[i] = i < 2 ? Math.min(box[i], v - pad) : Math.max(box[i], v + pad))));
+      if (m.clipper) {
+        const c = m.clipper.getBoundingClientRect();
+        [c.left - lr.left - pad, c.top - lr.top - pad, c.right - lr.left + pad, c.bottom - lr.top + pad].forEach((v, i) => (box[i] = i < 2 ? Math.max(box[i], v) : Math.min(box[i], v)));
+      }
+      const [ax, bx] = box[0] < box[2] ? snap(box[0], box[2]) : [0, 1], [ay, by] = box[1] < box[3] ? snap(box[1], box[3]) : [0, 1];
+      jobs.push({ layer, m, els, reads, region: [ax, ay, bx, by], filtered: !!f, changed });
+    });
+    jobs.forEach(({ layer, m, els, reads, region, filtered, changed }) => {
+      if (filtered) layer.style.filter = 'none';
+      reads.forEach((b, i) => { if (!b.hidden) { els[i].style.visibility = 'hidden'; b.style = els[i].style.cssText; b.hidden = true; } });
+      if (m.canvas) {
+        const key = region.join('|');
+        if (!changed && m.key === key) return;
+        const [x0, y0, x1, y1] = region, W = Math.ceil((x1 - x0) * DPR), H = Math.ceil((y1 - y0) * DPR);
+        if (m.key !== key) {
+          m.key = key;
+          Object.assign(m.canvas.style, { left: `${x0}px`, top: `${y0}px`, width: `${x1 - x0}px`, height: `${y1 - y0}px` });
+          m.canvas.width = W; m.canvas.height = H;
+        }
+        const spec = specOf(m.id), img = spec && GL.render(reads.filter(b => b.box), spec, region);
+        if (!img) return;
+        if (GL.bitmap) m.ctx.transferFromImageBitmap(img);
+        else { m.ctx.clearRect(0, 0, W, H); m.ctx.drawImage(img, 0, 0); }
+        return;
+      }
+      regionFilter(m, m.id, region);
+      const shapes = reads.map(b => {
+        if (!b.node || (b.node.tagName === 'ellipse') !== b.round) { b.node = document.createElementNS(SVGNS, b.round ? 'ellipse' : 'path'); b.dirty = true; }
+        if (!b.dirty) return b.node;
+        const { node, w, h, origin: [ox, oy] } = b;
+        if (b.round) node.setAttribute('cx', w / 2), node.setAttribute('cy', h / 2), node.setAttribute('rx', w / 2), node.setAttribute('ry', h / 2);
+        else node.setAttribute('d', rrect(w, h, b.radii));
+        node.setAttribute('transform', `translate(${b.x + ox} ${b.y + oy}) ${b.transform} translate(${-ox} ${-oy})`);
+        node.setAttribute('fill', b.fill);
+        b.dirty = false;
+        return node;
+      });
+      const kids = m.g.childNodes;
+      if (shapes.length !== kids.length || shapes.some((n, i) => kids[i] !== n)) m.g.replaceChildren(...shapes);
+    });
+  };
+  // Registered last, so each frame it copies positions after every renderer has moved its blobs
+  const mirrorLoop = () => { mirrorFrame(); requestAnimationFrame(mirrorLoop); };
+  requestAnimationFrame(mirrorLoop);
 })();
 </script>
 </body>

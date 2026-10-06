@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nik Williamson · Product designer</title>
+<meta name="description" content="Nik Williamson is a product designer in Orlando, FL, with a love for design systems, accessibility and well-written documentation.">
+<meta name="theme-color" content="#F4F0FF">
+<link rel="stylesheet" href="https://use.typekit.net/jxj1myf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* The DOM is the page: every word, link and image lives here, readable and focusable. With WebGL on, a
+   full-viewport canvas behind it redraws the display type, the section fills and the work as live goo,
+   and the DOM copies of those go transparent (still selectable, still read by screen readers). */
+:root {
+  --color-ground: #F4F0FF; --color-surface: #FFFFFF; --color-ink: #170B33; --color-muted: #4A3F68;
+  --color-lime: #C2F23D; --color-orange: #FF5F1F; --color-grape: #7A35FF; --color-pink: #FF8AD8;
+  --font-display: "degular-display", "degular", Georgia, serif;
+  --font-text: "degular-text", "degular", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --font-accent: "Bagel Fat One", "degular-display", Georgia, serif;
+  --type-display-xl: 800 clamp(64px, 12vw, 176px)/.84 var(--font-display); --track-display-xl: -.02em;
+  --type-display-l: 800 clamp(40px, 6vw, 84px)/.88 var(--font-display); --track-display-l: -.015em;
+  --type-h1: 800 clamp(32px, 4.2vw, 56px)/.95 var(--font-display); --track-h1: -.01em;
+  --type-h2: 800 clamp(26px, 2.8vw, 36px)/1 var(--font-display); --track-h2: -.005em;
+  --type-h3: 800 clamp(20px, 1.8vw, 24px)/1.1 var(--font-display);
+  --type-lead: 700 clamp(22px, 2.4vw, 30px)/1.2 var(--font-display);
+  --type-body: 400 17px/1.55 var(--font-text);
+  --type-small: 500 14px/1.45 var(--font-text);
+  --radius-md: 18px; --radius-lg: 28px; --radius-pill: 999px;
+  --gutter: clamp(16px, 5vw, 64px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body { margin: 0; background: var(--color-ground); color: var(--color-ink); font: var(--type-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+h1, h2, h3, p, ul, figure { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--color-grape); outline-offset: 4px; border-radius: 8px; }
+.wrap { max-width: 1320px; margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: fixed; left: var(--gutter); top: 12px; z-index: 20; transform: translateY(-200%); background: var(--color-ink); color: var(--color-ground); padding: 12px 18px; border-radius: var(--radius-pill); font: var(--type-small); font-weight: 600; text-decoration: none; }
+.skip:focus { transform: none; }
+
+canvas.world { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.page { position: relative; z-index: 1; }
+
+.mark .drop { display: inline-block; width: .2em; height: .2em; border-radius: 50%; margin-left: .06em; background: var(--color-lime); }
+.gl .mark .drop:not(.solid) { background: transparent; }
+.mark { display: inline-flex; align-items: baseline; font-family: var(--font-accent); font-weight: 400; line-height: 1; letter-spacing: -.01em; text-decoration: none; }
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px var(--gutter); pointer-events: none; }
+.nav > * { pointer-events: auto; }
+.nav .mark { font-size: 34px; }
+.nav .links { display: flex; align-items: center; gap: clamp(10px, 2vw, 24px); font: var(--type-small); font-weight: 600; background: var(--color-ground); border-radius: var(--radius-pill); padding: 5px 5px 5px 20px; }
+.nav .links a { text-decoration: none; }
+.pill { border: 0; border-radius: var(--radius-pill); padding: 12px 18px; font: var(--type-small); font-weight: 600; line-height: 1; background: var(--color-ink); color: var(--color-ground); cursor: pointer; }
+@media (max-width: 640px) { .nav .links .wide { display: none; } }
+
+section { position: relative; }
+.fill { background: var(--bg); color: var(--fg); }
+.gl .fill { background: transparent; }
+/* Text the canvas redraws as goo */
+.gl [data-goo] { color: transparent !important; }
+.gl [data-goo] em { color: transparent !important; }
+
+.hero { min-height: 100svh; display: grid; align-content: end; padding-block: 140px clamp(56px, 10vh, 120px); }
+.hero h1 { font: var(--type-display-xl); font-size: clamp(76px, 15.5vw, 236px); letter-spacing: var(--track-display-xl); }
+.hero h1 em { font-style: normal; color: var(--color-grape); }
+.hero .lead { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 32px; margin-top: clamp(24px, 4vw, 48px); }
+.hero .lead p { font: var(--type-lead); color: var(--color-muted); max-width: 32ch; }
+@media (max-width: 760px) { .hero .lead { grid-template-columns: minmax(0, 1fr); } }
+
+.head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: clamp(20px, 4vw, 56px); padding-block: clamp(120px, 16vw, 220px) clamp(40px, 6vw, 72px); }
+.num { font-family: var(--font-accent); font-weight: 400; font-size: clamp(120px, 20vw, 300px); line-height: .8; letter-spacing: -.02em; }
+.head h2 { font: var(--type-display-l); letter-spacing: var(--track-display-l); text-transform: uppercase; }
+.head p { font: var(--type-lead); max-width: 30ch; margin-top: 14px; }
+@media (max-width: 640px) { .head { grid-template-columns: minmax(0, 1fr); } }
+
+.work { list-style: none; padding: 0 0 clamp(120px, 14vw, 200px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px) clamp(16px, 3vw, 40px); }
+.work li { grid-column: span 6; }
+.work li:nth-child(3n + 1) { grid-column: span 7; }
+.work li:nth-child(3n + 2) { grid-column: span 5; margin-top: clamp(40px, 8vw, 120px); }
+.work li:nth-child(3n) { grid-column: 3 / span 8; }
+.card { display: grid; gap: 16px; padding: 16px 16px 22px; border-radius: var(--radius-lg); background: var(--cf); color: var(--ct); text-decoration: none; }
+.card .shot { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 16 / 10; }
+.card .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.card h3 { font: var(--type-h2); letter-spacing: var(--track-h2); padding-inline: 8px; }
+.card span { font: var(--type-small); font-weight: 600; padding-inline: 8px; }
+.gl .card { background: transparent; }
+.gl .card > * { opacity: 0; }
+@media (max-width: 760px) { .work li, .work li:nth-child(n) { grid-column: 1 / -1; margin-top: 0; } }
+
+.spread { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); padding-bottom: clamp(120px, 14vw, 200px); }
+.spread p { max-width: 46ch; }
+.clients { display: flex; flex-wrap: wrap; gap: 6px 26px; font: var(--type-h3); margin-top: 24px; }
+@media (max-width: 860px) { .spread { grid-template-columns: minmax(0, 1fr); } }
+
+.say { display: grid; gap: 8px; padding-bottom: clamp(120px, 14vw, 200px); }
+.say a { font: var(--type-display-l); letter-spacing: var(--track-display-l); text-decoration: none; justify-self: start; }
+.say a:hover, .say a:focus-visible { text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 10px; }
+.gl .say a:hover, .gl .say a:focus-visible { text-decoration-color: var(--color-ink); }
+footer { padding-block: 72px 96px; display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+footer .mark { font-size: 56px; }
+footer p { color: var(--color-muted); }
+
+/* Case study: opens over the page after the goo floods the screen in the project's color */
+dialog { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: var(--cf); color: var(--ct); overflow-y: auto; }
+dialog::backdrop { background: transparent; }
+dialog .wrap { padding-block: 96px; display: grid; gap: 32px; }
+dialog h2 { font: var(--type-display-l); letter-spacing: var(--track-display-l); max-width: 16ch; }
+dialog .sum { font: var(--type-lead); max-width: 34ch; }
+dialog figure img { border-radius: var(--radius-lg); width: 100%; }
+dialog .cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); }
+dialog .cols h3 { font: var(--type-h2); }
+dialog .cols > div { display: grid; gap: 14px; max-width: 60ch; }
+dialog .close { position: fixed; top: 22px; right: var(--gutter); }
+dialog[data-in] .wrap > * { animation: rise .5s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+dialog[data-in] .wrap > :nth-child(2) { animation-delay: .06s; }
+dialog[data-in] .wrap > :nth-child(3) { animation-delay: .12s; }
+dialog[data-in] .wrap > :nth-child(4) { animation-delay: .18s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+@media (max-width: 860px) { dialog .cols { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { dialog[data-in] .wrap > * { animation: none; } }
+.still dialog[data-in] .wrap > * { animation: none; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas class="world" aria-hidden="true"></canvas>
+<header class="nav">
+  <a class="mark" href="#top" aria-label="nikw, back to top">nikw<i class="drop solid"></i></a>
+  <nav class="links" aria-label="Main">
+    <a class="wide" href="#work">Work</a>
+    <a class="wide" href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <button class="pill" type="button" data-motion aria-pressed="false">Pause motion</button>
+  </nav>
+</header>
+<div class="page" id="top">
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hello">
+    <h1 id="hello" data-goo data-drip>Systems, but <em>squishy.</em></h1>
+    <div class="lead">
+      <p>Hi, I'm Nik. I'm a product designer in Orlando with a love for design systems, all things accessibility, and well-written documentation.</p>
+    </div>
+  </section>
+
+  <section class="fill" id="work" aria-labelledby="work-title" style="--bg:#7A35FF;--fg:#FFFFFF" data-section>
+    <div class="wrap">
+      <div class="head"><span class="num" data-goo style="color:#C2F23D" aria-hidden="true">01</span><div><h2 id="work-title" data-goo data-drip>Selected work</h2></div></div>
+      <ul class="work" id="work-list">
+        <li><a class="card" href="#case-quantum" data-case="quantum" style="--cf:#C2F23D;--ct:#170B33"><div class="shot"><img src="work/quantum.webp" alt="" width="1200" height="791" loading="lazy"></div><h3>Quantum Design System</h3><span>Electronic Arts</span></a></li>
+        <li><a class="card" href="#case-publishing" data-case="publishing" style="--cf:#C2F23D;--ct:#170B33"><div class="shot"><img src="work/publishing.webp" alt="" width="1200" height="791" loading="lazy"></div><h3>Universal Publishing Tool</h3><span>Electronic Arts</span></a></li>
+        <li><a class="card" href="#case-publix" data-case="publix" style="--cf:#FF5F1F;--ct:#170B33"><div class="shot"><img src="work/publix.webp" alt="" width="1200" height="674" loading="lazy"></div><h3>Store locator and storm hours</h3><span>Publix</span></a></li>
+        <li><a class="card" href="#case-adventhealth" data-case="adventhealth" style="--cf:#FF8AD8;--ct:#170B33"><div class="shot"><img src="work/adventhealth.webp" alt="" width="1200" height="791" loading="lazy"></div><h3>Unified patient portal</h3><span>AdventHealth</span></a></li>
+        <li><a class="card" href="#case-bcg" data-case="bcg" style="--cf:#170B33;--ct:#F4F0FF"><div class="shot"><img src="work/bcg.webp" alt="" width="1200" height="791" loading="lazy"></div><h3>BCG.com redesign</h3><span>Boston Consulting Group</span></a></li>
+        <li><a class="card" href="#case-sailthru" data-case="sailthru" style="--cf:#FFFFFF;--ct:#170B33"><div class="shot"><img src="work/sailthru.webp" alt="" width="1200" height="791" loading="lazy"></div><h3>Personalized email campaigns</h3><span>Sailthru</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="fill" id="about" aria-labelledby="about-title" style="--bg:#FF5F1F;--fg:#170B33" data-section>
+    <div class="wrap">
+      <div class="head"><span class="num" data-goo aria-hidden="true">02</span><div><h2 id="about-title" data-goo data-drip>Hi. I'm Nik.</h2></div></div>
+      <div class="spread">
+        <p class="lead-text" style="font:var(--type-lead)">I'm a UX designer based in Orlando, FL. I'm a sim racing nerd with a really cool cat, who happens to be very average at Rocket League.</p>
+        <div>
+          <p>I design the components, documentation and tools that help product teams ship consistent, accessible interfaces, in-house and agency, from games to groceries to healthcare.</p>
+          <p class="clients"><span>Electronic Arts</span><span>Publix</span><span>AdventHealth</span><span>BCG</span><span>Sailthru</span><span>The College Board</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fill" id="contact" aria-labelledby="contact-title" style="--bg:#C2F23D;--fg:#170B33" data-section>
+    <div class="wrap">
+      <div class="head"><span class="num" data-goo aria-hidden="true">03</span><div><h2 id="contact-title" data-goo data-drip>Say hi</h2></div></div>
+      <div class="say">
+        <a href="https://dribbble.com/nikw" data-goo>Dribbble</a>
+        <a href="https://github.com/nikwilliamson" data-goo>GitHub</a>
+        <a href="https://nikw.co/portfolio.pdf" data-goo>Portfolio PDF</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap">
+  <span class="mark"><span data-goo>nikw</span><i class="drop" data-blob="#C2F23D"></i></span>
+  <p>Nik Williamson · Product designer in Orlando, FL</p>
+</footer>
+</div>
+
+<dialog id="case" aria-labelledby="case-title">
+  <button class="pill close" type="button" data-close>Close</button>
+  <div class="wrap">
+    <h2 id="case-title"></h2>
+    <p class="sum"></p>
+    <figure><img alt="" width="1200" height="791"></figure>
+    <div class="cols"><h3>The problem</h3><div class="problem"></div></div>
+    <div class="cols"><h3>What we did</h3><div class="did"></div></div>
+  </div>
+</dialog>
+
+<script type="application/json" id="work-data">[{"slug": "quantum", "title": "Quantum Design System", "client": "Electronic Arts", "summary": "Designing, documenting and maintaining the design system behind the EA Desktop app.", "alt": "Quantum spec sheet for inline notifications, showing structure, single and dual action variants, and layout rules.", "problem": "EA needed a way to rapidly create, iterate on and build the new EA Desktop app.", "did": ["I designed, documented and maintained a fully featured set of components covering most of the UI needed to build EA Desktop, and any other product that would end up on Quantum.", "Every component ships with a spec like the one above: structure, variants, and the rules a developer needs to build it without asking. That documentation is what let Quantum spread to new EAX products, including the publishing tool."], "height": 791, "fill": "#C2F23D", "text": "#170B33"}, {"slug": "publishing", "title": "Universal Publishing Tool", "client": "Electronic Arts", "summary": "A new publishing tool for EAX, built on Contentful and Quantum.", "alt": "The publishing tool editing FIFA 21, with basic information fields, inline validation and an on-this-page index.", "problem": "Adding and editing games for EA Desktop and Content Engine was time consuming, repetitive and error prone.", "did": ["We built a UI layer on top of Contentful to make content management easier. The tool integrates with Synopsis for validation, and supports Dual Publish so messaging and content stay consistent between EA Desktop and Origin.", "We built it on Quantum, so the development team didn't spend significant time building UI, and every new EAX product stayed consistent."], "height": 791, "fill": "#C2F23D", "text": "#170B33"}, {"slug": "publix", "title": "Store locator and storm hours", "client": "Publix", "summary": "Moving Publix's digital experience in-house, starting with the page 80% of visitors touch.", "alt": "The Publix store locator in a modal over the homepage, listing nearby stores with their hours.", "problem": "80% of Publix.com visitors use the store locator, it hadn't had a meaningful update in years, and store hours only refreshed in a batch every six hours.", "did": ["Publix used to build its digital experiences through marketing and outside agencies. A big part of my work there has been shaping how we serve customers while bringing that work in-house.", "During hurricane season, waiting six hours for store hours to update isn't an option. We built a tool that stores, the emergency management team and other stakeholders use to override hours and message customers, and changes now go live instantly across 1,300 stores.", "Very little on Publix.com was reusable, so we built the store locator once, as a module. It works on a page, in a sidebar, in a modal, or anywhere else."], "height": 674, "fill": "#FF5F1F", "text": "#170B33"}, {"slug": "adventhealth", "title": "Unified patient portal", "client": "AdventHealth", "summary": "One place to see records, book appointments and manage care, whichever facility you visit.", "alt": "The patient portal home, with an upcoming appointment timeline, the care team and a patient summary card.", "problem": "Every AdventHealth facility had its own patient portal, each unintuitive and built on a different EMR system.", "did": ["We designed a unified patient portal that brings records, visit history, medication and the care team into one tool.", "The scope covered a web portal, a mobile app and an in-room TV application, so the same care information follows the patient from home to the hospital bed."], "height": 791, "fill": "#FF8AD8", "text": "#170B33"}, {"slug": "bcg", "title": "BCG.com redesign", "client": "Boston Consulting Group", "summary": "Leading UX for a top-three consulting firm's first redesign since the early 2000s.", "alt": "A BCG.com industry page for biopharmaceuticals, with a full-bleed photo header and related insights.", "problem": "BCG.com hadn't been updated since the early 2000s, and needed to look like a top-three consulting firm.", "did": ["As the only UX designer at Carbone Smolan Agency, I oversaw every part of the experience for BCG's users.", "That covered persona development, user testing, information architecture and overall site usability, which together carried the success of the redesign."], "height": 791, "fill": "#170B33", "text": "#F4F0FF"}, {"slug": "sailthru", "title": "Personalized email campaigns", "client": "Sailthru", "summary": "A campaign tool that makes a very complex personalization engine feel familiar.", "alt": "The Sailthru campaign dashboard, with a performance chart, headline metrics and a table of experiences.", "problem": "Sailthru's personalization product was extremely complex, and client marketing teams couldn't manage or understand it.", "did": ["Sailthru tracks user behavior, buckets people into segments automatically, and writes a unique email for each person. That power needed a layer marketers could actually drive.", "We designed a tool that looks like the campaign and analytics tools those teams already knew, so they could create campaigns, watch results and adjust on the fly."], "height": 791, "fill": "#FFFFFF", "text": "#170B33"}]</script>
+<script type="module" src="./alive.js"></script>
+</body>
+</html>

@@ -178,7 +178,7 @@ h1, h2, h3 { text-wrap: balance; }
 .goo-btn { position: relative; display: inline-grid; place-items: center; width: 230px; height: 64px; border: 0; padding: 0; background: none; cursor: pointer; font: 700 18px/1 var(--font-text); color: var(--color-on-fill); }
 .goo-btn .shapes { position: absolute; inset: -100px; filter: url(#goo); pointer-events: none; }
 .goo-btn .shapes span { position: absolute; background: var(--color-lime); border-radius: var(--radius-pill); }
-.goo-btn .shapes .blob { left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.goo-btn .shapes .blob { left: 0; top: 0; border-radius: 50%; }
 .goo-btn .txt { position: relative; }
 .btn-soft { border: 0; border-radius: var(--radius-pill); padding: 18px 24px; font: var(--type-body); font-weight: 600; line-height: 1; background: var(--color-ground); color: var(--color-ink); cursor: pointer; transition: transform .4s var(--spring); }
 .btn-soft:hover { transform: scale(1.05); }
@@ -196,14 +196,14 @@ h1, h2, h3 { text-wrap: balance; }
 .transition .page .tiles i { aspect-ratio: 1; border-radius: 12px; }
 .transition .sweep { position: absolute; inset: 0; pointer-events: none; }
 .transition .sweep .layer { position: absolute; inset: 0; filter: url(#goo); }
-.transition .sweep .layer i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.transition .sweep .layer i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .transition .row { justify-content: space-between; }
 @media (max-width: 640px) { .transitions { grid-template-columns: minmax(0, 1fr); } }
 
 /* Visuals */
 .goo-stage { position: relative; height: clamp(300px, 34vw, 440px); border-radius: var(--radius-lg); background: var(--color-surface); overflow: hidden; touch-action: pan-y; }
 .goo-stage .field { position: absolute; inset: 0; filter: url(#goo); }
-.goo-stage .field i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.goo-stage .field i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .browser { background: var(--color-ink); border-radius: var(--radius-lg); padding: 12px; }
 .browser .bar { display: flex; gap: 6px; padding: 4px 6px 12px; }
 .browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,240,255,.35); }
@@ -226,7 +226,7 @@ h1, h2, h3 { text-wrap: balance; }
 .pairings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .pairings .post { aspect-ratio: 3 / 2; padding: clamp(10px, 1.4vw, 16px); border-radius: var(--radius-md); }
 .mini { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.mini i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.mini i { position: absolute; left: 0; top: 0; border-radius: 50%; }
 .pairings .post .name { margin-top: auto; font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
 @media (max-width: 640px) { .pairings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .socials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }

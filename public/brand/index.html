@@ -250,7 +250,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="goo"/>
       <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
@@ -546,7 +546,7 @@ h1, h2, h3 { text-wrap: balance; }
     // With a fill, colour is set flat rather than read back from the blur, which leaves faint banding inside big shapes
     const rgb = fill ? [1, 3, 5].map(i => +(parseInt(fill.slice(i, i + 2), 16) / 255).toFixed(4)) : null;
     const rows = rgb ? `0 0 0 0 ${rgb[0]}  0 0 0 0 ${rgb[1]}  0 0 0 0 ${rgb[2]}` : '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0';
-    if (!document.getElementById(id)) gooDefs.insertAdjacentHTML('beforeend', `<filter id="${id}" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${blur}" result="blur"/><feColorMatrix in="blur" mode="matrix" values="${rows}  0 0 0 ${k} ${-(k * cut).toFixed(2)}" result="goo"/></filter>`);
+    if (!document.getElementById(id)) gooDefs.insertAdjacentHTML('beforeend', `<filter id="${id}" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${blur}" result="blur"/><feColorMatrix in="blur" mode="matrix" values="${rows}  0 0 0 ${k} ${-(k * cut).toFixed(2)}" result="goo"/></filter>`);
     return id;
   };
   // Puddle settings, tuned by Nik in the puddle playground. Ranges are [min, max], drawn per surface.
@@ -1011,6 +1011,53 @@ h1, h2, h3 { text-wrap: balance; }
     const loop = () => { if (visible) frame(performance.now() / 1000, false); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
   });
+
+  // Safari won't run SVG filters on HTML, so every goo layer is redrawn each frame as SVG shapes inside a
+  // filtered <g>. The HTML blobs stay the source of truth (the renderers above keep moving them) but are
+  // hidden; each one's box, corner radii, colour and 2D transform is copied onto an ellipse or rounded rect.
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const LAYERS = '.deco, .mini, .goo-stage .field, .goo-btn .shapes, .transition .sweep .layer, .opener .goo, .site .goo, .column .liquid';
+  const mirrors = new WeakMap(), nodes = new WeakMap();
+  const rrect = (w, h, [a, b, c, d]) => `M${a},0H${w - b}A${b},${b} 0 0 1 ${w},${b}V${h - c}A${c},${c} 0 0 1 ${w - c},${h}H${d}A${d},${d} 0 0 1 0,${h - d}V${a}A${a},${a} 0 0 1 ${a},0Z`;
+  const CORNERS = ['borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius'];
+  const copyShape = el => {
+    const cs = getComputedStyle(el), w = el.offsetWidth, h = el.offsetHeight;
+    const round = CORNERS.every(k => cs[k] === '50%');
+    let node = nodes.get(el);
+    if (!node || (node.tagName === 'ellipse') !== round) {
+      node = document.createElementNS(SVGNS, round ? 'ellipse' : 'path');
+      nodes.set(el, node);
+      el.style.visibility = 'hidden';
+    }
+    if (round) ['cx', 'rx'].forEach(a => node.setAttribute(a, w / 2)), ['cy', 'ry'].forEach(a => node.setAttribute(a, h / 2));
+    else node.setAttribute('d', rrect(w, h, CORNERS.map(k => Math.min(parseFloat(cs[k]) || 0, Math.min(w, h) / 2))));
+    const [ox, oy] = cs.transformOrigin.split(' ').map(parseFloat), m = cs.transform === 'none' ? '' : cs.transform.replace(/,/g, ' ');
+    node.setAttribute('transform', `translate(${el.offsetLeft + ox} ${el.offsetTop + oy}) ${m} translate(${-ox} ${-oy})`);
+    node.setAttribute('fill', cs.backgroundColor);
+    return node;
+  };
+  const mirror = layer => {
+    let m = mirrors.get(layer);
+    if (!m || !m.svg.isConnected) {
+      const svg = document.createElementNS(SVGNS, 'svg'), g = document.createElementNS(SVGNS, 'g');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none';
+      svg.append(g);
+      layer.append(svg);
+      m = { svg, g, visible: true, id: m && m.id };
+      new IntersectionObserver(([e]) => (m.visible = e.isIntersecting)).observe(layer);
+      mirrors.set(layer, m);
+    }
+    // Layers set their filter in CSS or inline (puddles change it per surface); take it over and switch it off
+    const f = getComputedStyle(layer).filter.match(/#([^"')]+)/);
+    if (f) { m.id = f[1]; layer.style.filter = 'none'; m.g.setAttribute('filter', `url(#${m.id})`); }
+    if (!m.visible) return;
+    const shapes = [...layer.children].filter(c => c !== m.svg).map(copyShape);
+    if (shapes.length !== m.g.childNodes.length || shapes.some((n, i) => m.g.childNodes[i] !== n)) m.g.replaceChildren(...shapes);
+  };
+  // Registered last, so each frame it copies positions after every renderer has moved its blobs
+  const mirrorLoop = () => { document.querySelectorAll(LAYERS).forEach(mirror); requestAnimationFrame(mirrorLoop); };
+  requestAnimationFrame(mirrorLoop);
 })();
 </script>
 </body>

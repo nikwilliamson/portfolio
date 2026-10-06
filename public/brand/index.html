@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nikw.co Brand Style</title>
+<meta name="description" content="Brand guidelines for nikw.co: color, typography, identity, motion and goo.">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="https://use.typekit.net/jxj1myf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Layout: brand-book rhythm for the web — full-bleed numbered dividers, then "spreads": a narrow title column beside a wide live visual. */
+:root {
+  --color-ground: #F4F0FF; --color-surface: #FFFFFF; --color-ink: #170B33; --color-muted: #4A3F68;
+  --color-lime: #C2F23D; --color-orange: #FF5F1F; --color-grape: #7A35FF; --color-pink: #FF8AD8;
+  --color-on-fill: #170B33;
+  --font-display: "degular-display", "degular", Georgia, serif;
+  --font-text: "degular-text", "degular", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --font-accent: "Bagel Fat One", "degular-display", Georgia, serif;
+  /* Type scale: every text style on the page comes from these */
+  --type-display-xl: 800 clamp(64px, 12vw, 176px)/.84 var(--font-display); --track-display-xl: -.04em;
+  --type-display-l: 800 clamp(40px, 6vw, 84px)/.88 var(--font-display); --track-display-l: -.035em;
+  --type-h1: 800 clamp(32px, 4.2vw, 56px)/.95 var(--font-display); --track-h1: -.03em;
+  --type-h2: 800 clamp(26px, 2.8vw, 36px)/1 var(--font-display); --track-h2: -.025em;
+  --type-h3: 800 clamp(20px, 1.8vw, 24px)/1.1 var(--font-display); --track-h3: -.015em;
+  --type-lead: 700 clamp(22px, 2.4vw, 30px)/1.2 var(--font-display); --track-lead: -.015em;
+  --type-body: 400 17px/1.55 var(--font-text);
+  --type-small: 500 14px/1.45 var(--font-text);
+  --type-mono: 400 12px/1.4 var(--font-mono);
+  --radius-sm: 12px; --radius-md: 18px; --radius-lg: 28px; --radius-pill: 999px;
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  --gutter: clamp(16px, 5vw, 64px);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--color-ground); color: var(--color-ink); font: var(--type-body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+html { overflow-x: clip; }
+h1, h2, h3, h4, p, ul { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 3px solid var(--color-grape); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1320px; margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Opener */
+.opener { position: relative; isolation: isolate; padding-block: 48px 72px; display: grid; gap: 40px; }
+.opener .goo { position: absolute; inset: 0 var(--gutter) auto auto; width: min(44%, 460px); height: 320px; filter: url(#goo); z-index: -1; pointer-events: none; }
+.opener .goo i { position: absolute; border-radius: 50%; animation: float 9s ease-in-out infinite alternate; }
+.opener h1 { font: var(--type-display-xl); letter-spacing: var(--track-display-xl, normal); }
+.opener h1 em { font-style: normal; color: var(--color-grape); }
+.opener p { font: var(--type-lead); letter-spacing: var(--track-lead, normal); color: var(--color-muted); max-width: 46ch; }
+.mark { font-family: var(--font-accent); font-weight: 400; line-height: 1; letter-spacing: -.01em; display: inline-flex; align-items: baseline; }
+.mark .drop { display: inline-block; width: .2em; height: .2em; border-radius: 50%; margin-left: .06em; background: var(--color-lime); }
+.opener .mark { font-size: 40px; }
+
+/* Divider */
+.divider { position: relative; overflow: hidden; isolation: isolate; color: var(--fg); background: var(--bg); }
+.divider .wrap { min-height: clamp(380px, 62vh, 620px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 32px; padding-block: 56px; }
+.divider .num { font-family: var(--font-accent); font-weight: 400; font-size: clamp(140px, 24vw, 340px); line-height: .8; letter-spacing: -.02em; color: var(--num, var(--fg)); }
+.divider h2 { font: var(--type-h1); letter-spacing: var(--track-h1, normal); text-transform: uppercase; }
+.divider ul { list-style: none; padding: 0; margin-top: 18px; display: grid; gap: 4px; }
+.divider ul li::before { content: "•"; margin-right: 10px; }
+@keyframes float { from { transform: translate(0, 0); } to { transform: translate(-36px, 28px); } }
+@media (max-width: 760px) { .divider .wrap { grid-template-columns: minmax(0, 1fr); min-height: 0; padding-block: 48px 40px; } }
+/* Spread */
+.spread { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 5vw, 72px); padding-block: clamp(48px, 7vw, 96px); }
+.spread + .spread { padding-top: 0; }
+.spread .copy { display: grid; gap: 14px; align-content: start; }
+.spread h3 { font: var(--type-h2); letter-spacing: var(--track-h2, normal); }
+.spread .copy p { color: var(--color-muted); max-width: 40ch; }
+.visual { min-width: 0; display: grid; gap: 16px; }
+.panel { background: var(--color-surface); border-radius: var(--radius-lg); padding: clamp(20px, 3vw, 40px); min-width: 0; }
+@media (max-width: 860px) { .spread { grid-template-columns: minmax(0, 1fr); } }
+
+/* Overview */
+.principles { display: grid; gap: 28px; }
+.principles > div { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: start; }
+.principles .dot { width: 44px; height: 44px; border-radius: 50%; }
+.principles b { font: var(--type-h3); letter-spacing: var(--track-h3, normal); display: block; margin-bottom: 4px; }
+.principles p { color: var(--color-muted); max-width: 52ch; }
+.about { font: var(--type-lead); letter-spacing: var(--track-lead, normal); max-width: 30ch; }
+.about em { font-style: normal; color: var(--color-grape); }
+
+/* Color */
+.columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; padding-bottom: 40px; }
+.column { position: relative; height: clamp(280px, 34vw, 440px); }
+.column .liquid { position: absolute; inset: 0 0 -70px 0; filter: url(#goo); }
+.column .body { position: absolute; inset: 0 0 70px 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0; background: var(--c); }
+.column .liquid i { position: absolute; bottom: 70px; border-radius: 50%; background: var(--c); animation: drip 4.5s ease-in-out infinite; }
+.column .liquid i:nth-child(2) { width: 46%; aspect-ratio: 1; left: 8%; margin-bottom: -18%; animation-delay: -1s; }
+.column .liquid i:nth-child(3) { width: 30%; aspect-ratio: 1; left: 58%; margin-bottom: -12%; animation-delay: -2.6s; }
+@keyframes drip { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(22px) scale(.88, 1.08); } }
+.column .label { position: absolute; top: 18px; left: 18px; right: 18px; color: var(--t); display: grid; gap: 2px; }
+.column .label b { font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+.column .label span { font: var(--type-mono); }
+@media (max-width: 760px) { .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 56px; } .column { height: 220px; } }
+.support { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.support div { border-radius: var(--radius-md); padding: 14px; min-height: 96px; display: grid; align-content: space-between; }
+.support b { font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+.support span { font: var(--type-mono); }
+@media (max-width: 760px) { .support { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tones { display: grid; gap: 18px; }
+.tone-row { display: grid; }
+.tone-main { height: 88px; border-radius: var(--radius-md) var(--radius-md) 0 0; display: flex; align-items: end; padding: 12px 16px; font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+.tone-strip { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); }
+.tone-strip div { height: 56px; display: flex; align-items: end; justify-content: center; padding-bottom: 6px; font: var(--type-mono); }
+.tone-strip div:first-child { border-bottom-left-radius: var(--radius-md); }
+.tone-strip div:last-child { border-bottom-right-radius: var(--radius-md); }
+.pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pair { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 600; }
+.pair .r { font: var(--type-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 760px) { .pairs { grid-template-columns: minmax(0, 1fr); } }
+.rules { display: grid; gap: 8px; padding-left: 1.1em; }
+.rules li::marker { color: var(--color-grape); }
+
+/* Typography */
+.specimen { background: var(--color-ink); color: var(--color-ground); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.specimen .big { font: var(--type-display-xl); letter-spacing: var(--track-display-xl, normal); color: var(--color-lime); }
+.specimen .glyphs { font: var(--type-h2); letter-spacing: var(--track-h2, normal); font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; display: grid; gap: 16px; }
+.format { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 32px; align-items: end; container-type: inline-size; }
+.weights { font: var(--type-h2); letter-spacing: var(--track-h2, normal); line-height: 1.12; color: var(--color-grape); display: grid; }
+/* A specimen, so it sizes to its panel rather than the viewport and never spills out */
+.aabb { font: var(--type-display-xl); letter-spacing: var(--track-display-xl, normal); font-size: 24cqi; text-align: right; white-space: nowrap; }
+@media (max-width: 760px) { .format { grid-template-columns: minmax(0, 1fr); } .aabb { font-size: 40cqi; text-align: left; } }
+.scale { display: grid; gap: 22px; }
+.step { display: grid; gap: 6px; }
+.step .tok { font: var(--type-mono); color: var(--color-muted); display: flex; gap: 10px; }
+.step .tok b { color: var(--color-ink); font-weight: 600; }
+.step .s { min-width: 0; overflow-wrap: break-word; }
+.t-display-xl { font: var(--type-display-xl); letter-spacing: var(--track-display-xl, normal); }
+.t-display-l { font: var(--type-display-l); letter-spacing: var(--track-display-l, normal); }
+.t-h1 { font: var(--type-h1); letter-spacing: var(--track-h1, normal); }
+.t-h2 { font: var(--type-h2); letter-spacing: var(--track-h2, normal); }
+.t-h3 { font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+.t-lead { font: var(--type-lead); letter-spacing: var(--track-lead, normal); }
+.t-body { font: var(--type-body); max-width: 60ch; }
+.t-small { font: var(--type-small); }
+.t-mono { font: var(--type-mono); }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.duo .panel { display: grid; gap: 10px; align-content: space-between; min-height: 220px; }
+/* Specimen names take the h1 size, but each face keeps its own weight: Bagel ships only 400, so 800 would be faked */
+.duo .name { font: var(--type-h1); font-weight: 400; line-height: 1; }
+.duo .mono { font-family: var(--font-mono); }
+.duo .bagel { font-family: var(--font-accent); }
+@media (max-width: 760px) { .duo { grid-template-columns: minmax(0, 1fr); } }
+
+/* Identity */
+.logo-hero { background: var(--color-surface); border-radius: var(--radius-lg); min-height: clamp(260px, 30vw, 380px); display: grid; place-items: center; }
+.logo-hero .mark { font-size: clamp(88px, 13vw, 180px); }
+.safe { background: var(--color-surface); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 56px); display: grid; place-items: center; }
+.safe-box { position: relative; background: #EEE6FF; padding: .55em; border-radius: 6px; font-size: clamp(56px, 9vw, 120px); }
+.safe-box .inner { background: var(--color-surface); }
+.safe-box .x { position: absolute; font: var(--type-mono); color: var(--color-grape); }
+.safe-box .x.t { top: .18em; left: 50%; transform: translateX(-50%); }
+.safe-box .x.l { left: .2em; top: 50%; transform: translateY(-50%); }
+.lockups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.lockup { border-radius: var(--radius-md); min-height: 170px; display: grid; place-items: center; }
+.lockup .mark { font-size: clamp(48px, 6vw, 76px); }
+@media (max-width: 760px) { .lockups { grid-template-columns: minmax(0, 1fr); } }
+.voice { display: grid; gap: 28px; }
+.voice > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 20px; align-items: baseline; }
+.voice b { font: var(--type-h2); letter-spacing: var(--track-h2, normal); }
+.voice p { color: var(--color-muted); }
+.voice q { quotes: "\201C" "\201D"; color: var(--color-ink); font-weight: 600; }
+@media (max-width: 760px) { .voice > div { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
+
+/* Motion */
+.track { position: relative; height: 72px; border-radius: var(--radius-pill); background: var(--color-ground); }
+.track .dot { position: absolute; top: 8px; left: 8px; width: 56px; height: 56px; border-radius: 50%; background: var(--color-grape); }
+.row { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: center; }
+.play { border: 0; border-radius: var(--radius-pill); padding: 13px 20px; font: var(--type-small); font-weight: 600; line-height: 1; background: var(--color-ink); color: var(--color-ground); cursor: pointer; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.facts b { font: var(--type-display-l); letter-spacing: var(--track-display-l, normal); display: block; font-variant-numeric: tabular-nums; }
+.facts span { color: var(--color-muted); font: var(--type-small); }
+@media (max-width: 760px) { .facts { grid-template-columns: minmax(0, 1fr); } }
+.goo-btn { position: relative; display: inline-grid; place-items: center; width: 230px; height: 64px; border: 0; padding: 0; background: none; cursor: pointer; font: 700 18px/1 var(--font-text); color: var(--color-on-fill); }
+.goo-btn .shapes { position: absolute; inset: -100px; filter: url(#goo); pointer-events: none; }
+.goo-btn .shapes span { position: absolute; background: var(--color-lime); border-radius: var(--radius-pill); }
+.goo-btn .shapes .blob { left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.goo-btn .txt { position: relative; }
+.btn-soft { border: 0; border-radius: var(--radius-pill); padding: 18px 24px; font: var(--type-body); font-weight: 600; line-height: 1; background: var(--color-ground); color: var(--color-ink); cursor: pointer; transition: transform .4s var(--spring); }
+.btn-soft:hover { transform: scale(1.05); }
+.link { color: var(--color-grape); font-weight: 600; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Transitions: one goo sweep, two palettes */
+.transitions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.transition { display: grid; gap: 12px; }
+.transition .stage { position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius-lg); overflow: hidden; isolation: isolate; }
+.transition .page { position: absolute; inset: 0; padding: clamp(16px, 2.4vw, 26px); display: grid; align-content: space-between; }
+.transition .page[hidden] { display: none; }
+.transition .page b { font: var(--type-display-l); letter-spacing: var(--track-display-l, normal); }
+.transition .page span { font: var(--type-small); font-weight: 600; }
+.transition .page .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.transition .page .tiles i { aspect-ratio: 1; border-radius: 12px; }
+.transition .sweep { position: absolute; inset: 0; pointer-events: none; }
+.transition .sweep .layer { position: absolute; inset: 0; filter: url(#goo); }
+.transition .sweep .layer i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.transition .row { justify-content: space-between; }
+@media (max-width: 640px) { .transitions { grid-template-columns: minmax(0, 1fr); } }
+
+/* Visuals */
+.goo-stage { position: relative; height: clamp(300px, 34vw, 440px); border-radius: var(--radius-lg); background: var(--color-surface); overflow: hidden; touch-action: pan-y; }
+.goo-stage .field { position: absolute; inset: 0; filter: url(#goo); }
+.goo-stage .field i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.browser { background: var(--color-ink); border-radius: var(--radius-lg); padding: 12px; }
+.browser .bar { display: flex; gap: 6px; padding: 4px 6px 12px; }
+.browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(244,240,255,.35); }
+.site { position: relative; isolation: isolate; overflow: hidden; background: var(--color-ground); border-radius: 18px; padding: clamp(18px, 3vw, 36px); display: grid; gap: clamp(28px, 4vw, 56px); }
+.site nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; font: var(--type-small); font-weight: 600; }
+.site nav .mark { font-size: 26px; }
+.site nav .links { display: flex; gap: 18px; }
+.site h4 { font: var(--type-display-l); letter-spacing: var(--track-display-l, normal); }
+.site h4 em { font-style: normal; color: var(--color-grape); }
+.site .work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.site .work div { aspect-ratio: 4 / 3; border-radius: 14px; padding: 12px; display: flex; align-items: end; font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+.site .goo { position: absolute; top: -40px; right: -30px; width: 46%; height: 260px; filter: url(#goo); z-index: -1; }
+.site .goo i { position: absolute; border-radius: 50%; }
+/* Decoration: puddles, and the drifting goo on pairing cards */
+.deco { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.deco i { position: absolute; left: 0; top: 0; border-radius: 50%; }
+.decos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.decos .tile { position: relative; isolation: isolate; overflow: hidden; aspect-ratio: 3 / 2; border-radius: var(--radius-md); padding: 12px; display: flex; align-items: end; font: var(--type-small); font-weight: 600; }
+@media (max-width: 640px) { .decos { grid-template-columns: minmax(0, 1fr); } }
+.pairings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pairings .post { aspect-ratio: 3 / 2; padding: clamp(10px, 1.4vw, 16px); border-radius: var(--radius-md); }
+.mini { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.mini i { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
+.pairings .post .name { margin-top: auto; font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
+@media (max-width: 640px) { .pairings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.socials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.post { position: relative; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; isolation: isolate; padding: clamp(14px, 2vw, 22px); display: flex; flex-direction: column; justify-content: space-between; }
+.post .mark { font-size: 20px; }
+.post .head { font: var(--type-h2); letter-spacing: var(--track-h2, normal); }
+.post .bagel { font-family: var(--font-accent); font-size: clamp(40px, 5vw, 72px); line-height: .9; }
+@media (max-width: 760px) { .socials { grid-template-columns: minmax(0, 1fr); } .site .work { grid-template-columns: repeat(2, minmax(0, 1fr)); } .site nav .links { display: none; } }
+
+.closer { padding-block: 72px 96px; display: grid; gap: 12px; }
+.closer .mark { font-size: 56px; }
+.closer p { color: var(--color-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-soft { transition: none; }
+  .opener .goo i, .column .liquid i { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="goo"/>
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="wrap opener">
+  <div class="goo" aria-hidden="true"><i style="width:240px;height:240px;right:0;top:20px;background:var(--color-lime)"></i><i style="width:140px;height:140px;right:190px;top:120px;background:var(--color-orange);animation-duration:7s"></i><i style="width:86px;height:86px;right:130px;top:230px;background:var(--color-grape);animation-duration:12s"></i></div>
+  <span class="mark">nikw<i class="drop"></i></span>
+  <h1>Systems, but <em>squishy.</em></h1>
+  <p>Brand guidelines for nikw.co. Version 1, October 2026.</p>
+</header>
+
+<!-- 01 OVERVIEW -->
+<section class="divider" id="overview" style="--bg:var(--color-grape);--fg:#FFFFFF;--num:var(--color-lime)" data-deco="any top #170B33">
+  <div class="wrap"><div class="num">01</div><div><h2>Overview</h2><ul><li>About the brand</li><li>Principles</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>About the brand</h3><p>nikw.co is the portfolio of Nik Williamson, a design systems engineer in Orlando, FL.</p></div>
+    <div class="visual"><p class="about">A polished design-systems voice with a soft, physical sense of play. Tokens behave like jelly, and <em>related things melt together.</em></p></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Principles</h3><p>Three rules every page, component and scene follows.</p></div>
+    <div class="visual principles">
+      <div><span class="dot" style="background:var(--color-ink)"></span><span><b>Polished first</b><p>Crisp type, generous spacing and strict contrast. The playfulness only works because the base is exact.</p></span></div>
+      <div><span class="dot" style="background:var(--color-lime)"></span><span><b>Goo means relation</b><p>Things merge only when they are connected, like a token and its alias. Unrelated content stays crisp and separate.</p></span></div>
+      <div><span class="dot" style="background:var(--color-orange)"></span><span><b>Color is a fill</b><p>Lime, orange and pink are surfaces you put ink on. Grape is the only accent that can be text.</p></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 COLOR -->
+<section class="divider" id="color" style="--bg:var(--color-orange);--fg:var(--color-ink)" data-deco="any top #C2F23D">
+  <div class="wrap"><div class="num">02</div><div><h2>Color palette</h2><ul><li>Primary color</li><li>Color tones</li><li>Color pairings</li><li>Contrast</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>Primary color</h3><p>The ground is a pale lilac rather than white, so the bright fills read as candy instead of warning colors. Most of any page is ground and ink; the fills are the reward.</p></div>
+    <div class="visual">
+      <div class="columns">
+        <div class="column" style="--c:#C2F23D;--t:#170B33"><div class="liquid" aria-hidden="true"><div class="body"></div><i></i><i></i></div><div class="label"><b>Lime</b><span>#C2F23D</span></div></div>
+        <div class="column" style="--c:#FF5F1F;--t:#170B33"><div class="liquid" aria-hidden="true"><div class="body"></div><i></i><i></i></div><div class="label"><b>Blood orange</b><span>#FF5F1F</span></div></div>
+        <div class="column" style="--c:#7A35FF;--t:#FFFFFF"><div class="liquid" aria-hidden="true"><div class="body"></div><i></i><i></i></div><div class="label"><b>Grape</b><span>#7A35FF</span></div></div>
+        <div class="column" style="--c:#170B33;--t:#F4F0FF"><div class="liquid" aria-hidden="true"><div class="body"></div><i></i><i></i></div><div class="label"><b>Grape ink</b><span>#170B33</span></div></div>
+      </div>
+      <div class="support">
+        <div style="background:#FFFFFF"><b>Lilac milk</b><span>#F4F0FF · ground</span></div>
+        <div style="background:#FFFFFF"><b>White</b><span>#FFFFFF · surface</span></div>
+        <div style="background:#4A3F68;color:#FFFFFF"><b>Muted</b><span>#4A3F68 · secondary text</span></div>
+        <div style="background:#FF8AD8"><b>Bubblegum</b><span>#FF8AD8 · rare accent</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Color tones</h3><p>Each fill has a nine-step scale for hover states, tinted surfaces and charts. The 500 step is the brand color itself.</p></div>
+    <div class="visual tones" id="tones"></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Color pairings</h3><p>Every fill with every brand color that takes the same text color: lime, orange, pink and white all carry ink, grape and ink both carry white. Cards are grouped by fill; the goo takes the second color, so text reads the same over both.</p></div>
+    <div class="visual"><div class="pairings" id="pairings"></div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Contrast</h3><p>Every text pairing is checked against WCAG 2.2. The ratios here are calculated live on the page.</p>
+      <ul class="rules"><li>Text on lime, orange or pink is always grape ink.</li><li>Lime and orange are never text on the ground.</li><li>Grape is the only accent used as text.</li></ul></div>
+    <div class="visual"><div class="pairs" data-pairs='[["#170B33","#F4F0FF","Ink on ground"],["#170B33","#C2F23D","Ink on lime"],["#170B33","#FF5F1F","Ink on orange"],["#170B33","#FF8AD8","Ink on pink"],["#7A35FF","#F4F0FF","Grape on ground"],["#FFFFFF","#7A35FF","White on grape"],["#4A3F68","#F4F0FF","Muted on ground"],["#F4F0FF","#170B33","Lilac on ink"],["#C2F23D","#F4F0FF","Lime on ground"],["#FF5F1F","#F4F0FF","Orange on ground"]]'></div></div>
+  </div>
+</div>
+
+<!-- 03 TYPOGRAPHY -->
+<section class="divider" id="typography" style="--bg:var(--color-lime);--fg:var(--color-ink)" data-deco="any top #FF5F1F">
+  <div class="wrap"><div class="num">03</div><div><h2>Typography</h2><ul><li>Primary typeface</li><li>Format style</li><li>Type scale</li><li>Supporting typefaces</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>Primary typeface</h3><p>Degular, by OH no Type Co. Degular Display sets headlines and labels at 20px and up; Degular Text handles reading and UI. Both load from the Adobe Fonts kit, and the serif fallback makes a missing kit obvious.</p></div>
+    <div class="visual"><div class="specimen">
+      <div class="big">Degular</div>
+      <div class="glyphs"><span>AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</span><span>1234567890</span><span>!@#$%&amp;*()+,.?/</span></div>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Format style</h3><p>Headlines and labels use Black (800) with tight tracking, and the lead uses Bold (700). Body copy uses Regular (400), small text Medium (500) and UI labels Semibold (600).</p></div>
+    <div class="visual"><div class="panel format">
+      <div class="weights"><span style="font-weight:200">Thin</span><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:600">Semibold</span><span style="font-weight:700">Bold</span><span style="font-weight:800">Black</span></div>
+      <div class="aabb">AaBb</div>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Type scale</h3><p>Every text style on this page comes from this scale. Display through lead are fluid between phone and desktop; body, small and mono are fixed.</p></div>
+    <div class="visual"><div class="panel scale">
+      <div class="step"><div class="tok"><b>display-xl</b><span>64–176 · 800</span></div><div class="s t-display-xl">Squishy</div></div>
+      <div class="step"><div class="tok"><b>display-l</b><span>40–84 · 800</span></div><div class="s t-display-l">Selected work</div></div>
+      <div class="step"><div class="tok"><b>h1</b><span>32–56 · 800</span></div><div class="s t-h1">Rebuilding a token pipeline</div></div>
+      <div class="step"><div class="tok"><b>h2</b><span>26–36 · 800</span></div><div class="s t-h2">From Figma variables to CSS</div></div>
+      <div class="step"><div class="tok"><b>h3</b><span>20–24 · 800</span></div><div class="s t-h3">What changed for product teams</div></div>
+      <div class="step"><div class="tok"><b>lead</b><span>22–30 · 700</span></div><div class="s t-lead">Systems, but squishy, for teams that ship.</div></div>
+      <div class="step"><div class="tok"><b>body</b><span>17 · Text 400</span></div><div class="s t-body">I build the tokens, components and tooling that let product teams ship consistent interfaces without slowing down.</div></div>
+      <div class="step"><div class="tok"><b>small</b><span>14 · Text 500</span></div><div class="s t-small">Shipped Q2 2026 · 14 product teams · 3 platforms</div></div>
+      <div class="step"><div class="tok"><b>mono</b><span>Geist Mono 12 · 400</span></div><div class="s t-mono">color.action.primary → lime.500</div></div>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Supporting typefaces</h3><p>Geist Mono for token names and code. Bagel Fat One sets the logo and the big section numbers, and otherwise works as a sticker-like accent: one word, at most once per screen.</p></div>
+    <div class="visual duo">
+      <div class="panel"><div class="name mono">Geist Mono</div><p class="t-small" style="font-family:var(--font-mono);color:var(--color-muted)">--color-action-primary: {lime.500};</p></div>
+      <div class="panel" style="background:var(--color-pink)"><div class="name bagel">yum.</div><p class="t-small">Bagel Fat One · logo, section numbers, accent</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 IDENTITY -->
+<section class="divider" id="identity" style="--bg:var(--color-ink);--fg:var(--color-ground);--num:var(--color-lime)" data-deco="any top #7A35FF">
+  <div class="wrap"><div class="num">04</div><div><h2>Identity</h2><ul><li>The logo</li><li>Safe zone</li><li>Logo color</li><li>Voice</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>The logo</h3><p>The domain name set in Bagel Fat One, ended by a lime drop instead of a period. The drop is the one piece of goo that is always present.</p></div>
+    <div class="visual"><div class="logo-hero"><span class="mark">nikw<i class="drop"></i></span></div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Safe zone</h3><p>Keep clear space equal to the x-height of the wordmark on every side. Minimum size is 20px tall on screen.</p></div>
+    <div class="visual"><div class="safe"><div class="safe-box"><span class="x t">x</span><span class="x l">x</span><span class="inner mark">nikw<i class="drop"></i></span></div></div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Logo color</h3><p>Ink or white for the letters. The drop is lime, or grape when the background is lime.</p></div>
+    <div class="visual lockups">
+      <div class="lockup" style="background:var(--color-surface)"><span class="mark" style="color:var(--color-ink)">nikw<i class="drop"></i></span></div>
+      <div class="lockup" style="background:var(--color-grape)"><span class="mark" style="color:#FFFFFF">nikw<i class="drop"></i></span></div>
+      <div class="lockup" style="background:var(--color-lime)"><span class="mark" style="color:var(--color-ink)">nikw<i class="drop" style="background:var(--color-grape)"></i></span></div>
+      <div class="lockup" style="background:var(--color-ink)"><span class="mark" style="color:var(--color-ground)">nikw<i class="drop"></i></span></div>
+    </div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Voice</h3><p>Nik Williamson in prose, nikw as the mark. The writing sounds like a senior engineer explaining something to a colleague.</p></div>
+    <div class="visual voice">
+      <div><b>Plain</b><p>Say the thing. <q>I build design systems</q> beats <q>I craft scalable design ecosystems.</q></p></div>
+      <div><b>Warm</b><p>First person and short sentences, written the way you'd say it out loud.</p></div>
+      <div><b>A little cheeky</b><p>One playful line per page, usually the headline. Everything else stays precise.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 MOTION -->
+<section class="divider" id="motion" style="--bg:var(--color-pink);--fg:var(--color-ink)" data-deco="any top #C2F23D">
+  <div class="wrap"><div class="num">05</div><div><h2>Motion</h2><ul><li>The spring</li><li>Interaction</li><li>Transition</li><li>Reduced motion</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>The spring</h3><p>One underdamped spring for anything that responds to the user. The small overshoot is what reads as squish.</p></div>
+    <div class="visual">
+      <div class="panel" style="display:grid;gap:18px">
+        <div class="track" id="track"><div class="dot"></div></div>
+        <div class="row"><button class="play" type="button" id="play">Play</button><span class="t-small" style="color:var(--color-muted)">CSS fallback: cubic-bezier(.34, 1.56, .64, 1)</span></div>
+      </div>
+      <div class="facts"><div><b>260</b><span>Stiffness</span></div><div><b>14</b><span>Damping</span></div><div><b>~6%</b><span>Overshoot, settling in about 600ms</span></div></div>
+    </div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Interaction</h3><p>Hover and focus pull droplets out of a shape and let them snap back. Pointer-driven blobs ease toward the cursor and stretch along their direction of travel.</p></div>
+    <div class="visual"><div class="panel row" style="min-height:200px;justify-content:center;gap:28px">
+      <button class="goo-btn" type="button"><span class="shapes" aria-hidden="true"></span><span class="txt">See the work</span></button>
+      <button class="btn-soft" type="button">Say hi</button>
+      <a class="link" href="#motion">Read the case study</a>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Transition</h3><p>Page changes are made of goo blobs in a single color. Wash closes in from every side and becomes the next page. Melt drips down over the page, swaps it while it's covered, and oozes off the bottom.</p></div>
+    <div class="visual"><div class="transitions">
+      <div class="transition" data-sweep="wash">
+        <div class="stage">
+          <div class="page" style="background:var(--color-pink)"><span>nikw</span><b>Work</b><div class="tiles"><i style="background:var(--color-lime)"></i><i style="background:var(--color-orange)"></i><i style="background:var(--color-grape)"></i></div></div>
+          <div class="page" hidden style="background:var(--color-lime)"><span>nikw</span><b>About</b><span style="font-weight:400">Design systems, but squishy.</span></div>
+          <div class="sweep" aria-hidden="true"></div>
+        </div>
+        <div class="row"><b class="t-h3">Wash</b><button class="play" type="button">Play wash</button></div>
+        <p class="t-small" style="color:var(--color-muted)">Floods in from every side in the next page's color and becomes it. For moving between sections.</p>
+      </div>
+      <div class="transition" data-sweep="melt">
+        <div class="stage">
+          <div class="page" style="background:var(--color-orange)"><span>nikw</span><b>Work</b><div class="tiles"><i style="background:var(--color-lime)"></i><i style="background:var(--color-pink)"></i><i style="background:var(--color-grape)"></i></div></div>
+          <div class="page" hidden style="background:var(--color-lime)"><span>nikw</span><b>About</b><span style="font-weight:400">Design systems, but squishy.</span></div>
+          <div class="sweep" aria-hidden="true"></div>
+        </div>
+        <div class="row"><b class="t-h3">Melt</b><button class="play" type="button">Play melt</button></div>
+        <p class="t-small" style="color:var(--color-muted)">Grape drips down over the page and slides away. For opening a case study.</p>
+      </div>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Reduced motion</h3><p>When someone asks for reduced motion, shapes keep their goo but stop moving. State changes happen instantly, transitions swap the page without a sweep, and nothing drifts or follows the pointer.</p></div>
+    <div class="visual"><div class="facts"><div><b>0</b><span>Ambient drift</span></div><div><b>0ms</b><span>State transitions</span></div><div><b>100%</b><span>Content still visible and usable</span></div></div></div>
+  </div>
+</div>
+
+<!-- 06 VISUALS -->
+<section class="divider" id="visuals" style="--bg:var(--color-grape);--fg:#FFFFFF;--num:var(--color-lime)" data-deco="any top #170B33">
+  <div class="wrap"><div class="num">06</div><div><h2>Brand visuals</h2><ul><li>Multicolor goo</li><li>Solid goo</li><li>Multicolor solid goo</li><li>Decoration</li><li>Digital application</li><li>Social media</li></ul></div></div>
+</section>
+<div class="wrap">
+  <div class="spread">
+    <div class="copy"><h3>Multicolor goo</h3><p>Goo is a blur followed by an alpha threshold, so shapes fuse when they get close. Text never goes inside the filter. Blobs sit behind or beside headlines, never over body copy.</p></div>
+    <div class="visual"><div class="goo-stage" data-goo="multi" aria-hidden="true"><div class="field"></div></div><p class="t-small" style="color:var(--color-muted)">Move your pointer through the field. The lime blob follows on the spring.</p></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Solid goo</h3><p>One fill, one mass. Use it when the shape itself is the point, like a hero backdrop or a section transition. Grape is the default; lime and orange work on the same rules.</p></div>
+    <div class="visual"><div class="goo-stage" data-goo="solid" aria-hidden="true"><div class="field"></div></div><p class="t-small" style="color:var(--color-muted)">Move your pointer through the field. The cursor blob joins the mass on the spring.</p></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Multicolor solid goo</h3><p>Several fills, each its own mass. Blobs only fuse with blobs of the same color; different colors slide over and under each other without merging, so every color keeps a clean edge.</p></div>
+    <div class="visual"><div class="goo-stage" data-goo="layered" aria-hidden="true"><div class="field"></div></div><p class="t-small" style="color:var(--color-muted)">Move your pointer through the field. The lime cursor blob joins the lime goo and passes over the rest.</p></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Decoration</h3><p>Decoration is a puddle: one blob with children around it, each trailing a short chain. Centred near a corner it reads as a corner; scaled up and pushed off a side it reads as an edge. Every puddle is drawn fresh for each surface, so no two share a shape.</p>
+      <ul class="rules"><li>One decoration per surface, in one color from the pairings.</li><li>Keep it clear of the wordmark and of body text.</li><li>Corners and edges live on posts and section dividers.</li></ul>
+      <div class="row"><button class="play" type="button" id="reshuffle">Shuffle</button></div></div>
+    <div class="visual"><div class="decos" id="decos"></div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Digital application</h3><p>The portfolio homepage: wordmark top left, one squishy headline, and work cards in brand fills. White cards on lilac, no borders or shadows.</p></div>
+    <div class="visual"><div class="browser" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i></div>
+      <div class="site">
+        <div class="goo"><i style="width:180px;height:180px;right:0;top:20px;background:var(--color-lime)"></i><i style="width:100px;height:100px;right:140px;top:110px;background:var(--color-orange)"></i></div>
+        <nav><span class="mark">nikw<i class="drop"></i></span><span class="links"><span>Work</span><span>About</span><span>Contact</span></span></nav>
+        <h4>Systems, but <em>squishy.</em></h4>
+        <div class="work">
+          <div style="background:var(--color-lime)">Token pipeline rebuild</div>
+          <div style="background:var(--color-grape);color:#FFFFFF">Component library 3.0</div>
+          <div style="background:var(--color-surface)">Figma to code sync</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <div class="spread">
+    <div class="copy"><h3>Social media</h3><p>Square posts use one fill, one headline and the wordmark. Bagel Fat One can carry a single word.</p></div>
+    <div class="visual socials" aria-hidden="true">
+      <div class="post" style="background:var(--color-lime);color:var(--color-ink)" data-deco="corner tr #7A35FF"><span class="mark">nikw<i class="drop" style="background:var(--color-grape)"></i></span><span class="head">New case study: the token pipeline</span></div>
+      <div class="post" style="background:var(--color-grape);color:#FFFFFF" data-deco="corner tr #FF5F1F"><span class="mark">nikw<i class="drop"></i></span><span class="head">Tokens are a material, not a list.</span></div>
+      <div class="post" style="background:var(--color-pink);color:var(--color-ink)" data-deco="corner br #7A35FF"><span class="mark">nikw<i class="drop"></i></span><span class="bagel">yum.</span><span class="t-small">Component library 3.0 is out.</span></div>
+    </div>
+  </div>
+</div>
+
+<footer class="wrap closer">
+  <span class="mark">nikw<i class="drop"></i></span>
+  <p>nikw.co brand guidelines · v1 · October 2026</p>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Color math
+  const hexToRgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const rgbToHex = c => '#' + c.map(v => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase();
+  const mix = (a, b, t) => { const B = hexToRgb(b); return rgbToHex(hexToRgb(a).map((v, i) => v + (B[i] - v) * t)); };
+  const lum = h => hexToRgb(h).map(v => v / 255)
+    .map(v => v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)
+    .reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
+  const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+  const grade = r => r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : r >= 3 ? 'Large text only' : 'Fill only';
+  const textOn = bg => ratio(bg, '#170B33') >= ratio(bg, '#FFFFFF') ? '#170B33' : '#FFFFFF';
+
+  // Color pairings: every ordered pair of brand colors whose fill and goo take the same text color (ink on
+  // both, or white on both), so type can cross the goo without changing color. Fill first, goo second.
+  const brand = [['Lime', '#C2F23D'], ['Orange', '#FF5F1F'], ['Grape', '#7A35FF'], ['Pink', '#FF8AD8'], ['Ink', '#170B33'], ['White', '#FFFFFF']];
+  const pairings = document.getElementById('pairings');
+  // Ink-text colors first, then white-text, so each group fills whole rows
+  const byText = [...brand].sort((a, b) => (textOn(a[1]) === '#FFFFFF') - (textOn(b[1]) === '#FFFFFF'));
+  byText.forEach(([fillName, fill]) => byText.forEach(([gooName, goo]) => {
+    const fg = textOn(fill);
+    if (fill === goo || textOn(goo) !== fg) return;
+    const post = document.createElement('div');
+    post.className = 'post';
+    post.style.cssText = `background:${fill};color:${fg}`;
+    post.dataset.mini = goo;
+    post.innerHTML = `<span class="name">${gooName} on ${fillName.toLowerCase()}</span>`;
+    pairings.append(post);
+  }));
+
+  // Decoration: puddles, generated per surface so no two share a shape
+  const rnd = (lo, hi) => lo + Math.random() * (hi - lo);
+  // One goo filter per blur and threshold, made on demand. Decoration is one color, so the filter outputs the
+  // thresholded blur alone (no composite back over the source) in sRGB, which keeps dark fills free of a ring.
+  const gooDefs = document.querySelector('svg defs');
+  const gooFilter = (blur, gain = 20, cut = 0.4, fill) => {
+    // A wider blur flattens the alpha ramp at the threshold, so gain scales with it to keep the edge under a pixel wide
+    const k = +(gain * Math.max(1, blur / 16)).toFixed(1);
+    const id = `goo-${blur}-${gain}-${cut}-${fill || ''}`.replace(/[.#]/g, '_');
+    // With a fill, colour is set flat rather than read back from the blur, which leaves faint banding inside big shapes
+    const rgb = fill ? [1, 3, 5].map(i => +(parseInt(fill.slice(i, i + 2), 16) / 255).toFixed(4)) : null;
+    const rows = rgb ? `0 0 0 0 ${rgb[0]}  0 0 0 0 ${rgb[1]}  0 0 0 0 ${rgb[2]}` : '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0';
+    if (!document.getElementById(id)) gooDefs.insertAdjacentHTML('beforeend', `<filter id="${id}" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="${blur}" result="blur"/><feColorMatrix in="blur" mode="matrix" values="${rows}  0 0 0 ${k} ${-(k * cut).toFixed(2)}" result="goo"/></filter>`);
+    return id;
+  };
+  // Puddle settings, tuned by Nik in the puddle playground. Ranges are [min, max], drawn per surface.
+  // A puddle is one main blob with children around it, each trailing a chain; placed on a corner it's a
+  // corner decoration, slid along a side and scaled up it's an edge decoration.
+  const PUDDLE = {
+    mainSize: [4, 32], mainSizeSmall: [9, 20], smallBelow: 240, children: [3, 6], turn: [-90, 90], spread: [0, 100],
+    childSize: [72, 128], neck: [48, 164], neckShrink: 8, minChild: 8, extra: [0, 3], extraSize: [64, 120], bend: [40, 80],
+    reach: 64, cornerIn: [-96, 96], edgeScale: 200, edgeIn: [-150, -150], edgeAlong: [-50, 3],
+    blurScale: 12, blurMin: 24, blurMax: 60, gain: 60, cut: 24,
+  };
+  const draw = ([lo, hi]) => lo + Math.random() * (hi - lo);
+  const puddle = (R, blur, C) => {
+    const minD = blur * C.minChild, rad = deg => deg * Math.PI / 180;
+    const neckFor = (f, d) => (f < 0 ? f * d : f * blur * 0.9 * Math.min(1, d / (blur * C.neckShrink)));
+    const out = [[0, 0, R * 2]];
+    const n = Math.round(draw(C.children)), turn = rad(draw(C.turn)), step = (Math.PI * 2) / n;
+    for (let i = 0; i < n; i++) {
+      // Children sit at even angles, each wobbled by part of the spacing, on a neck from the main blob
+      let a = turn + i * step + (Math.random() - 0.5) * step * draw(C.spread) / 100;
+      let d = Math.max(R * draw(C.childSize) / 100, minD);
+      const dist = R + d / 2 + neckFor(draw(C.neck) / 100, d);
+      let x = Math.cos(a) * dist, y = Math.sin(a) * dist;
+      out.push([x, y, d]);
+      // Each child trails a chain that bends either way at every link
+      for (let k = Math.round(draw(C.extra)); k > 0; k--) {
+        a += (Math.random() < 0.5 ? -1 : 1) * rad(draw(C.bend));
+        const nd = Math.max(d * draw(C.extraSize) / 100, minD), reach = d / 2 + nd / 2 + neckFor(draw(C.neck) / 100, nd);
+        x += Math.cos(a) * reach; y += Math.sin(a) * reach;
+        out.push([x, y, nd]);
+        d = nd;
+      }
+    }
+    return out;
+  };
+  const decorate = (el, tries = 0) => {
+    let [type, where, color] = el.dataset.deco.split(' ');
+    // "any top" / "any right" draw a fresh placement each time from the half away from the surface's text, so
+    // dividers (text along the bottom) and pairing cards (text down the left) mix corners and edges
+    if (type === 'any') {
+      const pool = { top: [['corner', 'tl'], ['corner', 'tr'], ['edge', 'top'], ['edge', 'right'], ['edge', 'left']], right: [['corner', 'tr'], ['corner', 'br'], ['edge', 'top'], ['edge', 'right'], ['edge', 'bottom']] }[where];
+      [type, where] = pool[Math.floor(Math.random() * pool.length)];
+    }
+    let layer = el.querySelector(':scope > .deco');
+    if (!layer) { layer = document.createElement('div'); layer.className = 'deco'; layer.setAttribute('aria-hidden', 'true'); el.prepend(layer); }
+    const C = PUDDLE, W = el.clientWidth, H = el.clientHeight, S = Math.min(W, H), edge = type === 'edge';
+    const blur = Math.min(Math.max(+(S * C.blurScale / 100).toFixed(1), C.blurMin), C.blurMax);
+    layer.style.filter = `url(#${gooFilter(blur, C.gain, C.cut / 100, color)})`;
+    // The layer overhangs the surface on every side (the surface clips it), so shapes running off an edge
+    // stay full strength right to it instead of thinning where the blur meets the layer's boundary
+    const P = blur * 5;
+    layer.style.inset = `${-P}px`;
+    const scale = edge ? C.edgeScale / 100 : 1;
+    const R = S * draw(S < C.smallBelow ? C.mainSizeSmall : C.mainSize) / 100 * scale;
+    // Where the puddle's centre goes: a corner pulled in (or out) along both sides, or a side's middle
+    // slid along it and set in (or out) from it
+    let ox, oy;
+    if (edge) {
+      const inn = R * draw(C.edgeIn) / 100, along = draw(C.edgeAlong) / 100;
+      if (where === 'top' || where === 'bottom') { ox = W / 2 + along * W; oy = where === 'top' ? inn : H - inn; }
+      else { oy = H / 2 + along * H; ox = where === 'left' ? inn : W - inn; }
+    } else {
+      const ix = R * draw(C.cornerIn) / 100, iy = R * draw(C.cornerIn) / 100;
+      ox = where.includes('r') ? W - ix : ix; oy = where.includes('b') ? H - iy : iy;
+    }
+    // Shrink the whole puddle if its far edge passes the cap, so size stays predictable
+    let blobs = puddle(R, blur, C);
+    const extent = Math.max(...blobs.map(([x, y, d]) => Math.hypot(x, y) + d / 2)), cap = S * C.reach / 100 * scale;
+    if (extent > cap) blobs = blobs.map(([x, y, d]) => [x * cap / extent, y * cap / extent, d * cap / extent]);
+    // A draw that lands almost entirely off the surface reads as missing, so draw again (a few times at most)
+    const seen = blobs.reduce((a, [x, y, d]) => {
+      const cx = ox + x, cy = oy + y, r = d / 2;
+      return a + Math.max(0, Math.min(W, cx + r) - Math.max(0, cx - r)) * Math.max(0, Math.min(H, cy + r) - Math.max(0, cy - r)) * Math.PI / 4;
+    }, 0);
+    if (seen < W * H * 0.02 && tries < 8) return decorate(el, tries + 1);
+    layer.innerHTML = blobs.map(([x, y, d]) => `<i style="width:${d}px;height:${d}px;transform:translate(${ox + x + P - d / 2}px,${oy + y + P - d / 2}px);background:${color}"></i>`).join('');
+  };
+  // The decoration gallery: every corner and every side, on the pairing fills
+  const decos = document.getElementById('decos');
+  const fills = [['#C2F23D', '#7A35FF'], ['#FF5F1F', '#C2F23D'], ['#7A35FF', '#FF8AD8'], ['#FF8AD8', '#FF5F1F'], ['#170B33', '#C2F23D'], ['#FF8AD8', '#7A35FF'], ['#C2F23D', '#FF5F1F'], ['#7A35FF', '#C2F23D']];
+  const names = { tl: 'top left', tr: 'top right', bl: 'bottom left', br: 'bottom right' };
+  [['corner', 'tl'], ['edge', 'top'], ['corner', 'tr'], ['edge', 'right'], ['corner', 'bl'], ['edge', 'bottom'], ['corner', 'br'], ['edge', 'left']].forEach(([type, where], i) => {
+    const [fill, color] = fills[i], tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.style.cssText = `background:${fill};color:${textOn(fill)}`;
+    tile.dataset.deco = `${type} ${where} ${color}`;
+    // Keep the label off the decoration: bottom-placed shapes push it to the top
+    if (where === 'bottom' || where === 'bl' || where === 'br') tile.style.alignItems = 'start';
+    if (where === 'left' || where === 'tl' || where === 'bl') tile.style.justifyContent = 'end';
+    tile.textContent = `${type === 'edge' ? 'Edge' : 'Corner'}, ${names[where] || where}`;
+    decos.append(tile);
+  });
+  const decorated = [...document.querySelectorAll('[data-deco]')];
+  decorated.forEach(el => decorate(el));
+  const ro = new ResizeObserver(entries => entries.forEach(e => decorate(e.target)));
+  decorated.forEach(el => ro.observe(el));
+  document.getElementById('reshuffle').addEventListener('click', () => decorated.forEach(el => decorate(el)));
+
+  // Tones: 50–400 mix toward white, 600–800 toward ink
+  const steps = [[50, .9], [100, .78], [200, .6], [300, .4], [400, .2], [500, 0], [600, -.2], [700, -.4], [800, -.6]];
+  const tones = document.getElementById('tones');
+  [['Lime', '#C2F23D'], ['Blood orange', '#FF5F1F'], ['Grape', '#7A35FF']].forEach(([name, base]) => {
+    const row = document.createElement('div');
+    row.className = 'tone-row';
+    const strip = steps.map(([n, t]) => {
+      const c = t >= 0 ? mix(base, '#FFFFFF', t) : mix(base, '#170B33', -t);
+      return `<div style="background:${c};color:${textOn(c)}">${n}</div>`;
+    }).join('');
+    row.innerHTML = `<div class="tone-main" style="background:${base};color:${textOn(base)}">${name}</div><div class="tone-strip">${strip}</div>`;
+    tones.append(row);
+  });
+
+  document.querySelectorAll('[data-pairs]').forEach(el => JSON.parse(el.dataset.pairs).forEach(([fg, bg, name]) => {
+    const r = ratio(fg, bg);
+    const d = document.createElement('div');
+    d.className = 'pair';
+    d.style.cssText = `background:${bg};color:${fg}`;
+    d.innerHTML = `<span>${name}</span><span class="r">${r.toFixed(2)}:1 · ${grade(r)}</span>`;
+    el.append(d);
+  }));
+
+  // Spring easing via linear()
+  const springEasing = (() => {
+    const k = 260, c = 14, w0 = Math.sqrt(k), z = c / (2 * Math.sqrt(k)), wd = w0 * Math.sqrt(1 - z * z);
+    const x = t => 1 - Math.exp(-z * w0 * t) * (Math.cos(wd * t) + (z * w0 / wd) * Math.sin(wd * t));
+    const pts = Array.from({ length: 48 }, (_, i) => +x((i / 47) * 0.9).toFixed(4));
+    pts[pts.length - 1] = 1;
+    const v = `linear(${pts.join(',')})`;
+    return CSS.supports('transition-timing-function', v) ? v : 'cubic-bezier(.34,1.56,.64,1)';
+  })();
+  document.documentElement.style.setProperty('--spring', springEasing);
+
+  const track = document.getElementById('track'), dot = track.querySelector('.dot');
+  let out = false;
+  document.getElementById('play').addEventListener('click', () => {
+    const d = track.clientWidth - 72;
+    const frames = [{ transform: 'translateX(0)' }, { transform: `translateX(${d}px)` }];
+    if (out) frames.reverse();
+    out = !out;
+    dot.getAnimations().forEach(a => a.cancel());
+    dot.animate(frames, { duration: reduce ? 1 : 900, easing: springEasing, fill: 'forwards' });
+  });
+
+  // Goo fields: multicolor, solid and multicolor solid share one renderer. Multicolor solid puts each color in
+  // its own filtered layer, so only blobs of the same color fuse; other colors pass over and under them.
+  const palettes = {
+    multi: { blobs: ['#C2F23D', '#FF5F1F', '#7A35FF', '#FF8AD8', '#7A35FF', '#C2F23D', '#FF8AD8', '#FF5F1F', '#7A35FF'], cursor: '#C2F23D' },
+    solid: { blobs: Array(9).fill('#7A35FF'), cursor: '#7A35FF' },
+    // Same colors anchored close and swinging wider, so they keep meeting and parting across the other colors
+    layered: { blobs: ['#C2F23D', '#C2F23D', '#7A35FF', '#FF5F1F', '#7A35FF', '#C2F23D', '#FF5F1F', '#7A35FF', '#FF5F1F'], ax: [0.1, 0.22, 0.32, 0.42, 0.5, 0.6, 0.68, 0.78, 0.9], swing: 1.5, cursor: '#C2F23D', perColor: true },
+  };
+  document.querySelectorAll('[data-goo]').forEach(stage => {
+    const { blobs: cols, cursor, perColor, ax, swing = 1 } = palettes[stage.dataset.goo];
+    const shared = stage.querySelector('.field'), layers = new Map();
+    // One field for everything, or one per color, stacked in the order colors first appear
+    const field = col => {
+      if (!perColor) return shared;
+      if (!layers.has(col)) { const f = document.createElement('div'); f.className = 'field'; stage.append(f); layers.set(col, f); }
+      return layers.get(col);
+    };
+    if (perColor) shared.remove();
+    const blobs = cols.map((col, i) => {
+      const s = 70 + ((i * 29) % 70), el = document.createElement('i');
+      el.style.cssText = `width:${s}px;height:${s}px;background:${col};margin:${-s / 2}px 0 0 ${-s / 2}px`;
+      field(col).append(el);
+      return { el, ax: ax ? ax[i] : 0.1 + (i * 0.8) / (cols.length - 1), ay: 0.5 + 0.2 * Math.sin(i * 2.1), sp: 0.3 + (i % 3) * 0.1, ph: i * 1.4, amp: (30 + (i % 3) * 14) * swing };
+    });
+    const cur = document.createElement('i');
+    cur.style.cssText = `width:90px;height:90px;background:${cursor};margin:-45px 0 0 -45px`;
+    field(cursor).append(cur);
+    const p = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5, vx: 0, vy: 0 };
+    stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); p.tx = (e.clientX - r.left) / r.width; p.ty = (e.clientY - r.top) / r.height; });
+    stage.addEventListener('pointerleave', () => { p.tx = 0.5; p.ty = 0.5; });
+    let visible = true;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(stage);
+    const draw = t => {
+      const W = stage.clientWidth, H = stage.clientHeight;
+      blobs.forEach(b => b.el.style.transform = `translate(${b.ax * W + Math.cos(t * b.sp + b.ph) * b.amp}px, ${b.ay * H + Math.sin(t * b.sp * 1.3 + b.ph) * b.amp}px)`);
+      p.vx = (p.vx + (p.tx - p.x) * 0.08) * 0.82; p.vy = (p.vy + (p.ty - p.y) * 0.08) * 0.82;
+      p.x += p.vx; p.y += p.vy;
+      const st = Math.min(Math.hypot(p.vx * W, p.vy * H) / 60, 0.35), ang = Math.atan2(p.vy * H, p.vx * W);
+      cur.style.transform = `translate(${p.x * W}px, ${p.y * H}px) rotate(${ang}rad) scale(${1 + st}, ${1 - st * 0.6})`;
+    };
+    if (reduce) draw(0);
+    else { const loop = ts => { if (visible) draw(ts / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  });
+
+  // Pairing goo: a few blobs drifting on their own in the card's second color, no pointer. One loop runs every
+  // card on screen; the flat-fill goo filter keeps edges crisp and dark fills free of a ring.
+  const minis = [...document.querySelectorAll('[data-mini]')].map(card => {
+    const layer = document.createElement('div');
+    layer.className = 'mini';
+    layer.setAttribute('aria-hidden', 'true');
+    card.prepend(layer);
+    const n = 5, blobs = Array.from({ length: n }, (_, i) => {
+      const el = document.createElement('i');
+      el.style.background = card.dataset.mini;
+      layer.append(el);
+      // Anchored in the card's right half, so the wordmark and label sit mostly clear
+      return { el, s: rnd(0.32, 0.6), ax: rnd(0.58, 0.95), ay: rnd(0.1, 0.9), sp: rnd(0.25, 0.55), ph: rnd(0, 6.3), amp: rnd(0.06, 0.14) };
+    });
+    const m = { card, layer, blobs, visible: true, size: 0 };
+    new IntersectionObserver(([e]) => (m.visible = e.isIntersecting)).observe(card);
+    return m;
+  });
+  const drawMini = (m, t) => {
+    const W = m.card.clientWidth, H = m.card.clientHeight;
+    if (m.size !== H) {
+      m.size = H;
+      m.layer.style.filter = `url(#${gooFilter(Math.max(6, Math.round(H * 0.07)), 30, 0.4, m.card.dataset.mini)})`;
+      m.blobs.forEach(b => { const d = b.s * H; Object.assign(b.el.style, { width: `${d}px`, height: `${d}px`, margin: `${-d / 2}px 0 0 ${-d / 2}px` }); });
+    }
+    m.blobs.forEach(b => b.el.style.transform = `translate(${b.ax * W + Math.cos(t * b.sp + b.ph) * b.amp * H}px, ${b.ay * H + Math.sin(t * b.sp * 1.3 + b.ph) * b.amp * H}px)`);
+  };
+  if (reduce) minis.forEach(m => drawMini(m, 0));
+  else { const loop = ts => { minis.forEach(m => m.visible && drawMini(m, ts / 1000)); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+
+  // Transitions: a grid of goo blobs covers the page and the page swaps while it's hidden. Wash closes in
+  // from every side in the next page's background color and stays: the goo becomes the new page. Melt
+  // drips down over the page in grape like warm goo, swaps it while covered, and slides off the bottom.
+  // One goo filter per stage.
+  const sweeps = { melt: '#7A35FF' };
+  const ease = x => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
+  const clamp01 = x => Math.min(Math.max(x, 0), 1);
+  document.querySelectorAll('[data-sweep]').forEach(card => {
+    const kind = card.dataset.sweep, stage = card.querySelector('.stage'), sweep = card.querySelector('.sweep');
+    const pages = card.querySelectorAll('.page'), btn = card.querySelector('.play');
+    const melt = kind === 'melt';
+    // Both run slow with a wide stagger so they ooze. Melt is one continuous pour with no stop: narrow
+    // columns twice the stage's height fall straight through, so they cover it for a window mid-fall.
+    const COLS = melt ? 6 : 5, ROWS = melt ? 6 : 4, IN = 1.5, HOLD = 0.12, SPREAD = 0.6, POUR = 3, POUR_LAG = 0.45;
+    const easeSine = x => -(Math.cos(Math.PI * x) - 1) / 2;
+    let swapAt = 0, pourEnd = 0;
+    const layer = document.createElement('div');
+    layer.className = 'layer';
+    sweep.append(layer);
+    // Each blob owns a grid cell: at full cover it sits on the cell (with jitter) big enough to overlap
+    // its neighbours, so the stage is always fully hidden at the swap
+    const blobs = [];
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      const el = document.createElement('i');
+      layer.append(el);
+      blobs.push({ el, c, r, jx: Math.random() - 0.5, jy: Math.random() - 0.5, a: Math.random() * 6.28, b: Math.random() * 6.28, dl: Math.random() });
+    }
+    let plan = [];
+    // Deal fresh start and end points per play: wash comes from and leaves toward random points around the
+    // edge, melt drips in from the top and slides off the bottom
+    const deal = () => {
+      const W = stage.clientWidth, H = stage.clientHeight, cw = W / COLS, ch = H / ROWS, rad = Math.hypot(cw, ch) * 0.7;
+      const far = Math.hypot(W, H) / 2 + rad;
+      if (melt) {
+        // Each column pours at its own random lag, so drips of different lengths hang side by side. The
+        // column's top runs from 2H above the stage to below it; it covers the stage while top ≤ 0 ≤ H ≤ bottom.
+        const mch = (2 * H) / ROWS, mrad = Math.hypot(cw, mch) * 0.7, o0 = -2 * H - mrad, o1 = H + mrad;
+        const colLag = Array.from({ length: COLS }, () => Math.random() * POUR_LAG);
+        const top = (c, t) => o0 + (o1 - o0) * easeSine(clamp01((t - colLag[c]) / POUR));
+        // Swap in the middle of the window where every column covers the stage
+        const m = mrad * 0.5, covered = [];
+        for (let t = 0; t < POUR + POUR_LAG; t += 0.01) if (colLag.every((_, c) => top(c, t) <= -m && top(c, t) + 2 * H >= H + m)) covered.push(t);
+        swapAt = covered.length ? covered[covered.length >> 1] : (POUR + POUR_LAG) / 2;
+        pourEnd = POUR + POUR_LAG + 0.05;
+        plan = blobs.map(b => ({
+          melt: true, x: (b.c + 0.5 + b.jx * 0.3) * cw, off: (b.r + 0.5) * mch, rad: mrad,
+          // The leading head and the trailing tail of each drip are a little smaller, so the ends taper
+          sc: b.r === ROWS - 1 || b.r === 0 ? 0.8 : 1, top: t => top(b.c, t), lag: colLag[b.c],
+        }));
+        return;
+      }
+      plan = blobs.map(b => {
+        const x = (b.c + 0.5 + b.jx * 0.4) * cw, y = (b.r + 0.5 + b.jy * 0.4) * ch;
+        const out = a => [W / 2 + Math.cos(a) * far, H / 2 + Math.sin(a) * far];
+        const dir = Math.atan2(y - H / 2, x - W / 2) + (Math.random() - 0.5) * 0.8;
+        const [sx, sy] = out(dir), [ex, ey] = out(dir + (Math.random() - 0.5) * 1.6);
+        // Outer blobs land first so the wash closes in from the edges; a random lag on top lets some
+        // arms reach in ahead of others, like melt's columns. Heads start small and swell as they ooze in.
+        const edgeness = Math.min(Math.hypot((x - W / 2) / W, (y - H / 2) / H) / 0.7, 1);
+        return { x, y, rad, sx, sy, ex, ey, s0: 0.55, s1: 0.55, lagIn: (1 - edgeness) * SPREAD * 0.45 + b.dl * SPREAD * 0.55, lagOut: 0, drip: true, ang: Math.atan2(y - sy, x - sx) };
+      });
+    };
+    const total = IN + SPREAD + 0.05, stays = kind === 'wash';
+    const draw = t => {
+      blobs.forEach((b, i) => {
+        const p = plan[i];
+        if (p.melt) {
+          // Stretch and sway follow the column's speed, so drips pull long mid-fall and round off at the ends
+          const k = clamp01((t - p.lag) / POUR), move = Math.sin(Math.PI * k), d = p.rad * 2 * p.sc;
+          const y = p.top(t) + p.off, sway = Math.sin(t * 1.8 + b.a) * move * p.rad * 0.18;
+          b.el.style.display = k > 0 && k < 1 ? '' : 'none';
+          b.el.style.width = b.el.style.height = `${d}px`;
+          b.el.style.transform = `translate(${p.x + sway - d / 2}px, ${y - d / 2}px) scale(${1 - move * 0.22}, ${1 + move * 0.5})`;
+          return;
+        }
+        const inT = ease(clamp01((t - p.lagIn) / IN)), outT = ease(clamp01((t - total - HOLD - p.lagOut) / IN));
+        const x = outT > 0 ? p.x + (p.ex - p.x) * outT : p.sx + (p.x - p.sx) * inT;
+        const y = outT > 0 ? p.y + (p.ey - p.y) * outT : p.sy + (p.y - p.sy) * inT;
+        const sc = outT > 0 ? 1 + (p.s1 - 1) * outT : p.s0 + (1 - p.s0) * inT;
+        // A little wobble while travelling keeps the edges alive; it fades out at full cover
+        const move = Math.sin(Math.PI * (outT > 0 ? outT : inT)), wob = move * p.rad * 0.12;
+        const d = p.rad * 2 * sc;
+        b.el.style.display = inT > 0 && outT < 1 && !(stays && t > total + HOLD) ? '' : 'none';
+        b.el.style.width = b.el.style.height = `${d}px`;
+        if (p.drip) {
+          // Drips stretch long and thin while they move and sway slowly side to side, then round off at rest
+          // Stretch runs along the direction of travel (straight down for melt, inward for wash) and the sway
+          // runs across it
+          const ang = p.ang ?? Math.PI / 2, sway = Math.sin(t * 1.8 + b.a) * move * p.rad * 0.18;
+          const ox = -Math.sin(ang) * sway, oy = Math.cos(ang) * sway;
+          b.el.style.transform = `translate(${x + ox - d / 2}px, ${y + oy - d / 2}px) rotate(${ang}rad) scale(${1 + move * 0.5}, ${1 - move * 0.22}) rotate(${-ang}rad)`;
+        } else {
+          b.el.style.transform = `translate(${x + Math.cos(t * 7 + b.a) * wob - d / 2}px, ${y + Math.sin(t * 6 + b.b) * wob - d / 2}px)`;
+        }
+      });
+    };
+    const swap = () => pages.forEach(pg => (pg.hidden = !pg.hidden));
+    let running = false;
+    const play = () => {
+      if (running) return;
+      if (reduce) { swap(); return; }
+      running = true;
+      btn.disabled = true;
+      deal();
+      // Wash floods in with the background of the page it's going to
+      const next = [...pages].find(pg => pg.hidden);
+      blobs.forEach(b => (b.el.style.background = sweeps[kind] || getComputedStyle(next).backgroundColor));
+      const t0 = performance.now(), end = melt ? pourEnd : stays ? total + HOLD + 0.05 : total * 2 + HOLD + 0.05;
+      let swapped = false;
+      const tick = now => {
+        const t = (now - t0) / 1000;
+        if (!swapped && t >= (melt ? swapAt : total + HOLD / 2)) {
+          swapped = true;
+          swap();
+          // The wash is now the page, so its content rises in on top of the goo
+          if (stays) [...next.children].forEach((c, k) => c.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 420, delay: k * 70, easing: springEasing, fill: 'backwards' }));
+        }
+        draw(Math.min(t, end));
+        if (t < end) requestAnimationFrame(tick);
+        else { running = false; btn.disabled = false; }
+      };
+      requestAnimationFrame(tick);
+    };
+    deal();
+    draw(-1);
+    btn.addEventListener('click', play);
+    stage.addEventListener('click', play);
+  });
+
+  // Organic goo button: the main blob is a row of circles fused by goo (no solid pill) and holds still.
+  // Three balls move exactly like the solid goo field: each drifts on a slow looping orbit around an
+  // anchor, and the anchor rides the same spring as the field's cursor blob. Load and every mouse-out
+  // deal the anchors a fresh random set of spots; mouse-in keeps the spots and reaches further out. A cursor blob
+  // follows the pointer on the same spring while hovered. Nothing reaches past 48% of button height at
+  // rest or 96% on hover.
+  document.querySelectorAll('.goo-btn').forEach(btn => {
+    const shapes = btn.querySelector('.shapes');
+    const O = 100, W = btn.offsetWidth, H = btn.offsetHeight, R = H / 2;
+    const cx = O + W / 2, cy = O + H / 2;
+    const add = size => { const el = document.createElement('span'); el.className = 'blob'; el.style.width = el.style.height = `${size}px`; shapes.append(el); return el; };
+    const body = (size, x, y) => ({ el: add(size), size, x, y, vx: 0, vy: 0 });
+    const spring = (b, tx, ty, k, d) => { b.vx = (b.vx + (tx - b.x) * k) * d; b.vy = (b.vy + (ty - b.y) * k) * d; b.x += b.vx; b.y += b.vy; };
+    // Point on the pill outline at parameter u (0..1), with its outward normal
+    const edge = u => {
+      const straight = W - H, per = 2 * straight + 2 * Math.PI * R, d = ((u % 1) + 1) % 1 * per;
+      if (d < straight) return { x: O + R + d, y: O, nx: 0, ny: -1 };
+      if (d < straight + Math.PI * R) { const t = (d - straight) / R - Math.PI / 2; return { x: O + W - R + Math.cos(t) * R, y: cy + Math.sin(t) * R, nx: Math.cos(t), ny: Math.sin(t) }; }
+      if (d < 2 * straight + Math.PI * R) return { x: O + W - R - (d - straight - Math.PI * R), y: O + H, nx: 0, ny: 1 };
+      const t = (d - 2 * straight - Math.PI * R) / R + Math.PI / 2; return { x: O + R + Math.cos(t) * R, y: cy + Math.sin(t) * R, nx: Math.cos(t), ny: Math.sin(t) };
+    };
+    // Reach limits past the button edge, as a share of button height: 48% at rest, 96% on hover
+    const REST = 0.48 * H, HOVER = 0.96 * H;
+    // The main blob: overlapping circles along the centre line that the goo filter fuses into a pill
+    const N = 6, D = H + 4;
+    const core = Array.from({ length: N }, () => add(D));
+    const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+    // Same drift as the goo field, scaled to the button: orbit size is a share of the ball and the 1.3
+    // vertical ratio matches the field so the loops trace the same figure, at twice the field's speed
+    const balls = [42, 34, 48].map((size, i) => ({
+      ...body(size, cx, cy), size, amp: size * 0.18, sp: 0.6 + i * 0.2, ph: rand(0, Math.PI * 2),
+    }));
+    // Spots sit a third apart around the outline with jitter, so the balls never bunch up. The anchor is
+    // pulled in by the orbit's full swing, so a ball's outer edge never passes the current limit.
+    // Each new set rotates 5–20% of the way around, either direction, so moves stay short and springy
+    // instead of flinging across the button
+    let start = Math.random();
+    const deal = () => {
+      start += rand(0.05, 0.2) * (Math.random() < 0.5 ? -1 : 1);
+      balls.forEach((b, i) => { b.u = start + i / 3 + rand(-0.06, 0.06); b.reach = rand(0.9, 1); });
+    };
+    // Anchor each ball at its spot, pushed out to the given limit
+    const reachTo = limit => balls.forEach(b => {
+      // Never deeper than 60% of the way to the centre line, so a pulled-in ball can't cross to the far side
+      const e = edge(b.u), out = Math.max(limit * b.reach - b.size / 2 - b.amp, -R * 0.6);
+      b.tx = e.x + e.nx * out; b.ty = e.y + e.ny * out;
+    });
+    deal();
+    reachTo(REST);
+    balls.forEach(b => { b.x = b.tx; b.y = b.ty; });
+    // Signed distance from the pill outline (negative inside) and the outward normal at the nearest point
+    const sdf = (x, y) => {
+      const qx = Math.max(Math.abs(x - cx) - (W / 2 - R), 0), dy = y - cy, len = Math.hypot(qx, dy) || 1;
+      return { d: Math.hypot(qx, dy) - R, nx: Math.sign(x - cx) * qx / len, ny: dy / len };
+    };
+    // The limit eases between states so a ball caught outside it on mouse-out is drawn in, not yanked
+    let limit = REST, hot = false, visible = true;
+    // Cursor blob: hides in the middle of the main blob at rest and chases the pointer while hovered
+    const cur = { ...body(H * 0.8, cx, cy), tx: cx, ty: cy, amp: 0 };
+    // The tightest limit each ball can actually meet: past it the clamp would shove the ball back and
+    // forth across the centre line every frame (the press flicker)
+    [...balls, cur].forEach(b => (b.floor = -R * 0.6 + b.size / 2 * 1.15 + b.amp));
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      cur.tx = O + e.clientX - r.left; cur.ty = O + e.clientY - r.top;
+    });
+    btn.addEventListener('pointerleave', () => { cur.tx = cx; cur.ty = cy; });
+    // Press is hover in reverse: the same spots, but the balls are drawn back inside the edge, the
+    // main blob shrinks and the cursor blob sinks to the centre line. Release springs it all back out.
+    const PRESS = -0.2 * H;
+    let down = false;
+    const settleTo = () => reachTo(down ? PRESS : hot ? HOVER : REST);
+    const wake = () => { if (hot) return; hot = true; settleTo(); };
+    const sleep = () => { if (!hot && !down) return; hot = false; down = false; deal(); settleTo(); };
+    const press = on => () => { if (down === on) return; down = on; settleTo(); };
+    btn.addEventListener('pointerdown', press(true));
+    btn.addEventListener('pointerup', press(false));
+    btn.addEventListener('pointercancel', press(false));
+    btn.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') press(true)(); });
+    btn.addEventListener('keyup', press(false));
+    btn.addEventListener('pointerenter', wake);
+    btn.addEventListener('pointerleave', sleep);
+    btn.addEventListener('focus', wake);
+    btn.addEventListener('blur', sleep);
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(btn);
+
+    // Orbit clock: twice the field's speed at rest, easing up to 1.6× that on hover so the loops quicken
+    // instead of jumping
+    let clock = 0, pace = 1, last = 0, sq = 1, vsq = 0;
+    const frame = (t, settle) => {
+      limit += ((down ? PRESS : hot ? HOVER : REST) - limit) * (settle ? 1 : 0.15);
+      pace += ((hot ? 1.6 : 1) - pace) * 0.05;
+      // Main blob size rides the same spring as the balls: 88% while pressed, overshooting on release
+      vsq = (vsq + ((down ? 0.88 : 1) - sq) * 0.08) * 0.82;
+      sq = settle ? (down ? 0.88 : 1) : sq + vsq;
+      clock += Math.min(t - last, 0.05) * pace;
+      last = t;
+      core.forEach((el, i) => (el.style.transform = `translate(${O + R + (i / (N - 1)) * (W - H) - D / 2}px, ${cy - D / 2}px) scale(${sq})`));
+      [...balls, cur].forEach(b => {
+        // Anchor: the goo field's cursor spring (k 0.08, damping 0.82), stretched along its velocity
+        const ty = b === cur && down ? cy : b.ty;
+        if (settle) { b.x = b.tx; b.y = ty; } else spring(b, b.tx, ty, 0.08, 0.82);
+        // Overshoot never carries a ball past the limit: the outward part of its motion is absorbed there
+        const { d, nx, ny } = sdf(b.x, b.y), over = d + b.size / 2 * 1.15 + b.amp - Math.max(limit, b.floor);
+        if (over > 0) {
+          b.x -= nx * over; b.y -= ny * over;
+          const vn = b.vx * nx + b.vy * ny;
+          if (vn > 0) { b.vx -= vn * nx; b.vy -= vn * ny; }
+        }
+        const st = Math.min(Math.hypot(b.vx, b.vy) / 60, 0.35), ang = Math.atan2(b.vy, b.vx);
+        const x = b.amp ? b.x + Math.cos(clock * b.sp + b.ph) * b.amp : b.x, y = b.amp ? b.y + Math.sin(clock * b.sp * 1.3 + b.ph) * b.amp : b.y;
+        b.el.style.transform = `translate(${x - b.size / 2}px, ${y - b.size / 2}px) rotate(${ang}rad) scale(${1 + st}, ${1 - st * 0.6})`;
+      });
+    };
+    if (reduce) { frame(0, true); ['pointerenter', 'pointerleave', 'pointerdown', 'pointerup', 'keydown', 'keyup'].forEach(ev => btn.addEventListener(ev, () => frame(0, true))); return; }
+    const loop = () => { if (visible) frame(performance.now() / 1000, false); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  });
+})();
+</script>
+</body>
+</html>

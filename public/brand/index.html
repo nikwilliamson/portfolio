@@ -109,7 +109,7 @@ h1, h2, h3 { text-wrap: balance; }
 .tone-strip div:first-child { border-bottom-left-radius: var(--radius-md); }
 .tone-strip div:last-child { border-bottom-right-radius: var(--radius-md); }
 .pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.pair { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 600; }
+.pair { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 12px 16px; border-radius: var(--radius-sm); font: var(--type-h3); letter-spacing: var(--track-h3, normal); }
 .pair .r { font: var(--type-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
 @media (max-width: 760px) { .pairs { grid-template-columns: minmax(0, 1fr); } }
 .rules { display: grid; gap: 8px; padding-left: 1.1em; }
@@ -311,7 +311,7 @@ h1, h2, h3 { text-wrap: balance; }
     <div class="visual tones" id="tones"></div>
   </div>
   <div class="spread">
-    <div class="copy"><h3>Color pairings</h3><p>Every fill with every brand color that takes the same text color: lime, orange, pink and white all carry ink, grape and ink both carry white. Cards are grouped by fill; the goo takes the second color, so text reads the same over both.</p></div>
+    <div class="copy"><h3>Color pairings</h3><p>Every fill with every brand color that takes the same text color: lime, orange and white carry ink, grape and ink carry white. Pink appears only as goo. Cards are grouped by fill; the goo takes the second color, so text reads the same over both.</p></div>
     <div class="visual"><div class="pairings" id="pairings"></div></div>
   </div>
   <div class="spread">
@@ -524,7 +524,8 @@ h1, h2, h3 { text-wrap: balance; }
   const byText = [...brand].sort((a, b) => (textOn(a[1]) === '#FFFFFF') - (textOn(b[1]) === '#FFFFFF'));
   byText.forEach(([fillName, fill]) => byText.forEach(([gooName, goo]) => {
     const fg = textOn(fill);
-    if (fill === goo || textOn(goo) !== fg) return;
+    // Pink is never a pairing fill; it only shows up as goo
+    if (fillName === 'Pink' || fill === goo || textOn(goo) !== fg) return;
     const post = document.createElement('div');
     post.className = 'post';
     post.style.cssText = `background:${fill};color:${fg}`;

@@ -1063,7 +1063,8 @@ h1, h2, h3 { text-wrap: balance; }
     svg.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none';
     svg.append(g);
     layer.append(svg);
-    m = { ...m, svg, g, visible: true, key: null, clipper: clipperOf(layer) };
+    // A redraw can wipe the layer (puddles do), so a rebuilt mirror re-links its filter clone
+    m = { ...m, svg, g, visible: true, key: null, cloned: null, clipper: clipperOf(layer) };
     new IntersectionObserver(([e]) => (m.visible = e.isIntersecting)).observe(layer);
     mirrors.set(layer, m);
     return m;
